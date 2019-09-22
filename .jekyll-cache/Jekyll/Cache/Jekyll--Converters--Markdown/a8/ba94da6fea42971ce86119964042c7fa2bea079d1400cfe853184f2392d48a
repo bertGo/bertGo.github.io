@@ -1,0 +1,96 @@
+I"�<h4 id="-亲密性">— 亲密性</h4>
+
+<ul>
+  <li>
+    <p>亲近性 ：robin亲近性原则是指：<code class="highlighter-rouge">相关的项组织在一起</code>，移动这些项，使他们的物理位置相互靠近，这样一来，相关的项将被看作凝聚一体的一个组，而不是一堆彼此无关的片段。</p>
+
+    <ul>
+      <li>在一个页面上<code class="highlighter-rouge">物理位置的接近就意味着关联</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>亲密性原则并不是说所有一切都更要靠近，其真正的的含义是：如果某些元素在理解上存在关联，或者相互之间存在某种关系，那么这些元素在视觉上也应当有关联。除此之外，其他孤立的元素或元素组则不应当存在亲密性。位置是否靠近可以体现出元素之间是否存在关系.</p>
+  </li>
+  <li>
+    <p>根本目的
+亲密性的根本目的是实现<code class="highlighter-rouge">组织性</code>。</p>
+  </li>
+  <li>
+    <p>如何实现：
+统计眼睛停顿的次数来数一数页面上的元素，如果页面上的项目超过3-5个，就要看看哪些孤立的元素可以归在一组建立更近的亲密性。使形成一个视觉单元。</p>
+  </li>
+  <li>
+    <p>要避免一个页面上有太多孤立的元素，不要在元素之间留下同样大小的空白，除非各组同属于一个子集</p>
+
+    <p>不同组的元素之间不要建立亲密关系！</p>
+  </li>
+</ul>
+
+<h4 id="对齐原则">—对齐原则</h4>
+
+<ul>
+  <li>尽量避免居中对齐，除非是深思熟虑的结果
+尽量避免两端对齐，也称为左右，块对齐，除非行足够长，能够避免单词之间出现难堪的空隙,或者有意识地想要创建一种比较正式，稳重的表示</li>
+  <li>只使用一种对齐方式
+    <ul>
+      <li>若在一个页面上同时使用两种对齐方式，要确保这些文本以某种方式对齐。</li>
+    </ul>
+  </li>
+  <li>任何元素都不能在页面上随意安放，每一项都应当与页面上的某个内容存在某种视觉关系。</li>
+  <li>如果设计中的对齐很明确，那么可以<code class="highlighter-rouge">有意识</code>地打破对齐，而且一定要表现出这是有意的。
+    <ul>
+      <li><code class="highlighter-rouge">在打破规则前，必须清楚规则是什么</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="重复">—重复</h4>
+
+<ul>
+  <li>
+    <p>Robin重复原则指出:<code class="highlighter-rouge">设计的某些方面需要在整个作品中重复</code></p>
+
+    <ul>
+      <li>使一致的元素更为突出,如标题和子标题的字体。让设计元素也变成有用的元素。</li>
+    </ul>
+  </li>
+  <li>
+    <p>如果哪个元素引起了你的兴趣,就可以拿来用作重复元素</p>
+
+    <ul>
+      <li>有时重复的项并不一定完全相同,而只是存在明确关联的紧密相关的对象。</li>
+      <li>打字机图像在“电影剧本创作大会”的所有宣传材料中都有出现，所以我们不需要使用整个图像。我们再一次看到只用重复图像中的一部分所带来的好处–读者确实“看到了”整个打印机</li>
+    </ul>
+  </li>
+  <li>
+    <p><em>重复就像是强调你的衣着。如果一位女士穿着一件可爱的黑色晚礼服,戴着一顶别
+致的帽子,她可能会用红色高跟鞋、红色口红和一朵红色小花来突出她的晚礼服</em></p>
+  </li>
+  <li>
+    <p>要避免太多地重复一个元素，重复太多会让人讨厌！;
+例如：</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="cm">/*如果这位女士想穿黑色晚礼服,配红帽子、红耳环、红口红、红色手提包、
+红鞋和一件红上衣,重复就太滥了,现在的对比不再有统一的效果,感觉上也让人不太舒服,太多的重复将混淆重点。*/</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="对比">—对比</h4>
+
+<ul>
+  <li>
+    <p>记住一个<code class="highlighter-rouge">重要的原则</code>: 要想实现有效的对比，对比就必须强烈，千万不要畏畏缩缩;<code class="highlighter-rouge"> 如果他们是不同的，那么就让他们看起来截然不同</code></p>
+
+    <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="cm">/* 可以采用多种方式产生对比。 比如大字体与小字体的对比；典雅的旧式体与加粗的无衬线的对比，细线与粗线的对比，冷色与暖色的对比，平滑材质与粗糙材质的对比；水平元素(如很长的一行的文本) 与垂直元素(又高又窄的以一列文本) 间隔很宽的文本行与紧凑在一起的文本行形成对比；小图片和大图片的对比，等等*/</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>robin对比原则指出：页面上不同元素之间要有对比效果，达到吸引读者的对比效果;</p>
+  </li>
+</ul>
+
+:ET

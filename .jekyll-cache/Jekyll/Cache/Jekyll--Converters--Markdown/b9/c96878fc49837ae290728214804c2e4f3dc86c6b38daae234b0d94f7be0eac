@@ -1,0 +1,47 @@
+I"�
+<h1 id="94">9/4</h1>
+
+<h3 id="react">–React</h3>
+
+<ul>
+  <li>
+    <p>setstate 使用函数来接收参数的意义：react的setstate的方法是异步的，react依次执行setstate方法，最终会全部执行完毕，有可能在按批次执行期间，react所依赖的值就全部执行完毕了，
+比如调用setstate方法时，该属性已经在其他地方被异步改变了，此时所依赖的就是一个脏值
+如果传入一个函数，就是以回调函数执行的，尽管setstate是异步的，但通过回调函数，它使用的是通过执行那一刻的属性</p>
+
+    <div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="k">this</span><span class="p">.</span><span class="nx">setstate</span><span class="p">({</span>
+	<span class="na">result</span><span class="p">:</span><span class="nx">results</span><span class="p">;</span>
+<span class="p">});</span>
+<span class="kd">const</span> <span class="p">{</span><span class="nx">bert</span><span class="p">}</span><span class="o">=</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span>
+<span class="c1">//可以更改成</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">setstate</span><span class="p">(</span><span class="nx">prevState</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span><span class="nx">bert</span><span class="p">}</span><span class="o">=</span><span class="nx">prevState</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">{</span>
+        <span class="na">result</span><span class="p">:</span><span class="nx">results</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>高级排序:
+react中，SORTS 对象允许你引用任何排序函数。排序模块 ，lodash ，排序方法：</p>
+
+    <div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nx">ortBy</span><span class="p">(</span><span class="nx">list</span><span class="p">,</span><span class="dl">'</span><span class="s1">title</span><span class="dl">'</span><span class="p">)</span><span class="c1">//第一个参数是被排序的列表，第二个参数是排方式</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li></li>
+</ul>
+
+:ET

@@ -1,0 +1,135 @@
+I"�<h3 id="github加速">github加速</h3>
+
+<ul>
+  <li>
+    <p>ubuntu :cd ~/   == &gt;su ==&gt;  cd /etc/  ==&gt;  vi hosts</p>
+
+    <p>将下面粘贴在最后一行:</p>
+
+    <p>github.com  192.30.253.112</p>
+
+    <p>assets-cdn.github.com 185.199.108.153</p>
+
+    <p>github.global.ssl.fastly.net 151.101.185.194</p>
+
+    <p>最后在终端,刷新dns</p>
+
+    <p>sudo /etc/init.d/networking restart</p>
+  </li>
+</ul>
+
+<h3 id="设计">设计</h3>
+
+<h3 id="对比">–对比</h3>
+
+<ul>
+  <li>根本目的 :
+    <ol>
+      <li>增强页面的效果</li>
+      <li>有助于信息的组织</li>
+    </ol>
+  </li>
+  <li>对比元素不能让读者混淆，也不能错误地强调重点</li>
+</ul>
+
+<h3 id="四大基本原则复习">–四大基本原则复习</h3>
+
+<ol>
+  <li>不要害怕在设计中留有空白，这能让你的眼睛（以及心灵）稍作休息。</li>
+  <li>不要害怕设计是不对称的，使用非居中的格式，不居中往往能使效果更强烈</li>
+  <li>不要害怕把单词设置的非常大或非常小，<code class="highlighter-rouge">不要担心说话声太大或者太小</code>,在合适的场合这都是可以的</li>
+</ol>
+
+<h3 id="一些注意的问题">一些注意的问题</h3>
+
+<ul>
+  <li>去掉边框，形成开放空间。不要把所有的一切都包上边框，让它自由呼吸</li>
+  <li>从那里入手 ：
+    <ol>
+      <li>先去掉所有多余的东西，这样才能知道到底在做什么。
+        <ol>
+          <li>例如：图像不需要边框，增加开放性</li>
+          <li>web地址并不需要有http 或email之类的词</li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="颜色运用">—颜色运用</h3>
+
+<h5 id="---颜色不仅有对其自己的影响还会影响周遭的其他对象"><code class="highlighter-rouge">			颜色不仅有对其自己的影响，还会影响周遭的其他对象</code></h5>
+
+<ul>
+  <li>
+    <p>三原色=&gt;三间色=&gt;第三色;色轮上相对的颜色为互补色，由于他们如此对立，所以最<code class="highlighter-rouge">佳搭配是一种作为主色，另一种用于强调</code>；</p>
+  </li>
+  <li>
+    <p>冷色趋于做背景色,而暖色是趋进型的。暖色不费多大功夫就能产生效果,红色和黄色能立即映入你的眼帘。所以,如果要组合暖色和冷色,一定要少用些暖色。</p>
+
+    <p>— MyFonts.com 寻找字体</p>
+  </li>
+</ul>
+
+<h2 id="字体设计">—字体设计</h2>
+
+<h5 id="字体让语言有了视觉的形态"><code class="highlighter-rouge">字体让语言有了视觉的形态</code></h5>
+
+<ul>
+  <li>
+    <p>标点符号后面一个空格</p>
+  </li>
+  <li>跟随在首段或者题目后的小标题不需要缩进</li>
+  <li>如果确实要把文字放进方框里，那么需要在周围留下足够的空间；</li>
+</ul>
+
+<h3 id="-字体的六大类别">— 字体的六大类别</h3>
+
+<ul>
+  <li>
+    <p>旧式体 Oldstyle</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="o">/*</span><span class="err">可以想象自己手里有一支</span> <span class="no">V</span> <span class="err">形笔尖的笔。旧式体都有衬线</span><span class="o">(</span><span class="err">见下图中的标注</span><span class="o">),</span><span class="err">而且小写字母的衬线总有一个角度</span><span class="o">(</span><span class="err">笔的角度</span><span class="o">),</span><span class="err">和主干连接处会有一条线</span><span class="o">(</span><span class="err">括孤</span><span class="o">)</span><span class="err">。由于使用的是这样一支笔</span><span class="o">,</span><span class="err">旧式体中的所有曲线笔划都有一种从粗到细的变化</span><span class="o">,</span><span class="err">技术上讲</span><span class="o">,</span><span class="err">这称为“粗</span> <span class="o">/</span> <span class="err">细过渡”</span> <span class="err">。笔划中的这种对比相对比较缓和</span><span class="o">,</span><span class="err">这说明它只是从比较细变化</span><span class="o">(</span><span class="err">过渡</span><span class="o">)</span><span class="err">为稍微粗一点。如果在曲线笔划的最细部分画一条线</span><span class="o">,</span><span class="err">这条线将是对角线。这条线称为强调线</span><span class="o">(</span><span class="n">stress</span><span class="o">)</span><span class="err">—旧式体有一条对角强调线。</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>现代体 Modern</p>
+
+    <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="o">/*</span><span class="nx">现代体有衬线</span><span class="p">,</span><span class="nx">不过它们的衬线是水平的</span><span class="p">,</span><span class="nx">而不再倾斜</span><span class="p">,</span><span class="nx">而且这些衬线很细</span><span class="err">。</span><span class="nx">现代体就像一座钢铁大桥</span><span class="p">,</span><span class="nx">结构很严格</span><span class="p">,</span><span class="nx">笔划中有剧烈的粗</span> <span class="o">/</span> <span class="nx">细过渡</span><span class="p">(</span><span class="nx">或对比</span><span class="p">)</span><span class="err">。</span><span class="nx">因为不存在笔的倾斜</span><span class="p">,</span><span class="nx">所以强调线完全是垂直的</span><span class="err">。</span><span class="nx">现代体看起来往往有一种冷酷</span><span class="err">、</span><span class="nx">高雅的感觉</span><span class="err">。</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>粗衬线体 Slab serif</p>
+
+    <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="c1">//整个字体都加粗，粗衬线字体的粗/细过渡都很小，甚至没有</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>无衬线字体 Sans serif</p>
+
+    <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="c">//没有衬线的字体，几乎没有可见的粗细过渡</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>手写体 Script</p>
+
+    <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nx">手写体设置的非常大可能会让人印象特别深刻</span><span class="err">；</span>
+<span class="c1">//看上去利用一个书法笔或书法刷，手写的所有字体都属于手写类字体。</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>花体</p>
+  </li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="c1">//...花花的</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+:ET

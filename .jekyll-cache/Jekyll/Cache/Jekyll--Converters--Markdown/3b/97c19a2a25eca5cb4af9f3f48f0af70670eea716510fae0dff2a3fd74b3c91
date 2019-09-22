@@ -1,0 +1,63 @@
+I"!<h1 id="727">7/27</h1>
+
+<h4 id="nodejs">nodejs</h4>
+
+<h3 id="复习">复习：</h3>
+
+<ul>
+  <li>
+    <p>node.js中 ，moudle.exports暴露多个函数：</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre><span class="err">#</span> <span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">abcd</span><span class="o">/</span><span class="nx">hello</span><span class="p">.</span><span class="nx">js</span><span class="p">:</span>
+  
+<span class="dl">'</span><span class="s1">use strict</span><span class="dl">'</span><span class="p">;</span>
+  
+<span class="kd">function</span> <span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">s</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">, </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+  
+<span class="kd">function</span> <span class="nx">hi</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hi, </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+  
+<span class="kd">function</span> <span class="nx">goodbye</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Goodbye, </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+  <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="o">=</span><span class="p">{</span>
+  	<span class="na">greet</span><span class="p">:</span><span class="nx">greet</span><span class="p">,</span>
+  	<span class="na">hi</span><span class="p">:</span><span class="nx">hi</span><span class="p">,</span>
+  	<span class="na">goodbye</span><span class="p">:</span><span class="nx">goodbye</span>
+  <span class="p">};</span>
+<span class="nl">greet</span><span class="p">:</span><span class="nx">greet</span> <span class="err">中，前面的</span><span class="nx">greet</span><span class="err">是给函数起的别名，在另一个页面调用时，</span><span class="nx">require</span><span class="err">函数页面的地址：</span>
+<span class="kd">var</span> <span class="nx">a</span><span class="o">=</span><span class="nx">require</span> <span class="p">(</span><span class="dl">'</span><span class="s1">hello.js</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">greet</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello world！</span><span class="dl">"</span><span class="p">);</span>
+  
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+:ET

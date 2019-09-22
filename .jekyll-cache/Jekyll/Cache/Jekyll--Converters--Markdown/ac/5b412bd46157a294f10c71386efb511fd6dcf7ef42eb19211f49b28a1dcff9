@@ -1,0 +1,22 @@
+I"�<h1 id="916">9/16</h1>
+
+<h3 id="慕课">慕课</h3>
+
+<h5 id="jquery">jquery:</h5>
+
+<ul>
+  <li>(window).resize 监听浏览器窗口大小</li>
+  <li>$.inArray(element,array)获取数组指定值的索引</li>
+  <li>Class.height()获取指定元素的高，不带px值</li>
+  <li>
+    <p>Class.position().left:获取指定元素的left,不带px值</p>
+  </li>
+  <li></li>
+</ul>
+
+<h4 id="分享">分享</h4>
+
+<ul>
+  <li>for in 会遍历数组的属性;for of 不会</li>
+</ul>
+:ET

@@ -1,0 +1,16 @@
+I"n<h1 id="731">7/31</h1>
+
+<h3 id="html">html</h3>
+
+<ul>
+  <li><em>/*阴影位置， 垂直阴影位置，渐变距离，阴影尺寸，阴影颜色*/</em></li>
+</ul>
+
+<p>​    -webkit-box-shadow: 0 0 5px 3px #ccc;</p>
+
+<ul>
+  <li>​    background: url(“./img/timg.jpeg”)  no-repeat fixed;
+no-repeat 背景不重复，fixed，背景固定;</li>
+  <li></li>
+</ul>
+:ET

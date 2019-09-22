@@ -1,0 +1,119 @@
+I"�<h1 id="826">8/26</h1>
+
+<h3 id="react">–React</h3>
+
+<ul>
+  <li>
+    <p>ReactDom.render(element,container[,callback]);</p>
+
+    <p>渲染一个react元素到由container提供的Dom中，并返回组件的一个引用(reference)。</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">render()</code> 方法是 class 组件中唯一必须实现的方法。</p>
+  </li>
+  <li>
+    <p>在导入的类，用ReactDom.render()渲染时，其中的element中渲染<code class="highlighter-rouge">类</code>要在外边加上箭头括号: &lt; Class/&gt;</p>
+
+    <div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">Test</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./New2</span><span class="dl">'</span><span class="p">;</span><span class="c1">//Test是暴露出的类</span>
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(&lt;</span><span class="nc">Test</span><span class="p">/&gt;,</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">wel</span><span class="dl">'</span><span class="p">));</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>如果是function，则不需要添加&lt;	/&gt;</p>
+  </li>
+  <li>
+    <p>const 声明的变量不可以被修改，如果声明了一个数组或对象，其内的内容可以被更新，但内容不可以被修改，数据结构不可以发生改变</p>
+  </li>
+  <li>
+    <p>模块的热替换：</p>
+
+    <p>模块热替换(HMR)是一个帮助你在浏览器中重新加载应用的工具,并且无需再让浏览
+器刷新页面。 添加在模块的入口文件中</p>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="k">if</span> <span class="p">(</span><span class="nx">module</span><span class="p">.</span><span class="nx">hot</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">module</span><span class="p">.</span><span class="nx">hot</span><span class="p">.</span><span class="nx">accept</span><span class="p">();</span>
+ <span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>
+    <p>.map(()=&gt;{},thisValue);第一个函数中，依次有三个参数，分别是数组的值，数组的索引，以及当前元素属于的数组对象</p>
+  </li>
+  <li>
+    <p>箭头函数:</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="p">()</span><span class="o">=&gt;</span><span class="p">{}</span>
+<span class="nx">item</span><span class="o">=&gt;</span>   <span class="err">这里可以不加花括号</span><span class="c1">//一个参数</span>
+<span class="nx">item</span><span class="p">,</span><span class="nx">index</span><span class="o">=&gt;</span><span class="p">{}</span><span class="c1">//no allowed</span>
+<span class="p">(</span><span class="nx">item</span><span class="p">,</span><span class="nx">index</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{}</span><span class="c1">//allowed</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>子类必须在constructor调用super()函数！
+因为子类是没有this对象的，调用super是将父类的this继承过来</p>
+  </li>
+  <li>
+    <p>ES6对象初始化:</p>
+
+    <div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">item</span><span class="o">=</span><span class="p">{</span>
+	<span class="na">name</span><span class="p">:</span><span class="nx">name</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="c1">//可以简写成</span>
+<span class="kd">const</span> <span class="nx">item</span><span class="o">=</span><span class="p">{</span>
+	<span class="nx">name</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>发出npm install 命令：</p>
+
+    <ol>
+      <li>查询node_moudle仓库中有没有对应的模块</li>
+      <li>若不存在，向registry查询模块压缩包网址</li>
+      <li>下载压缩包，存在根目录下的.npm目录下</li>
+      <li>解压压缩包，到当前项目的node_modules下</li>
+    </ol>
+  </li>
+  <li>
+    <p>bind是 ECMAScript 新增的方法, 这个方法的主要作用就是将函数绑定到某个对象.</p>
+  </li>
+  <li>
+    <p>函数执行上下文： 每次调用函数时，都会为该函数创建一个新的执行上下文。每个函数都拥有自己的执行上下文，但是只有在函数被调用的时候才会被创建。</p>
+  </li>
+</ul>
+
+<h3 id="http协议">–Http协议</h3>
+
+<ul>
+  <li>ACK是确认字符，</li>
+</ul>
+
+<h3 id="javascript">–javascript</h3>
+
+<ul>
+  <li><strong>遇到函数和变量同名且都会被提升的情况，函数声明优先级比较高，因此变量声明会被函数声明所覆盖，但是可以重新赋值。</strong>
+    <ul>
+      <li>如果变量没有重新赋值的话，则一直覆盖</li>
+    </ul>
+  </li>
+  <li>call、apply和bind：this 是第一个参数</li>
+  <li>箭头函数this指向:箭头函数没有自己的this，看其外层的是否有函数，如果有，外层函数的this就是内部箭头函数的this，如果没有，则this是window。</li>
+</ul>
+:ET

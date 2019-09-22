@@ -1,0 +1,11 @@
+I"!<h1 id="817">8.17</h1>
+
+<h3 id="慕课网">慕课网</h3>
+
+<ul>
+  <li>在bootstrap中，的组件中，可以控制class的font-size:10px，来控制组件的大小</li>
+  <li>jquery 的.attr控制元素的属性：
+` $(“.class”).attr({style:”color:red;”})`</li>
+  <li></li>
+</ul>
+:ET

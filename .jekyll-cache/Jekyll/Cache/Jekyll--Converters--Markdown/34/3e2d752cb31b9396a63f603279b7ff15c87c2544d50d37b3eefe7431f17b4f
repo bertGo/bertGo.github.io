@@ -1,0 +1,322 @@
+I"�E<h1 id="84">8/4</h1>
+
+<h3 id="sass">Sass</h3>
+
+<ul>
+  <li>
+    <p>npm 安装sass : npm install node-sass  –save-dev</p>
+
+    <ul>
+      <li>apt安装sass: sudo apt install ruby-sass或者sudo apt-get install ruby-sass</li>
+    </ul>
+  </li>
+  <li>
+    <p>未编译的sass文件后缀名为scss，不是sass</p>
+  </li>
+  <li>
+    <p>在sass 父选择器内使用伪类时，需要在前面加上&amp;符号,: #content a{ &amp;:hover{color:red; } }</p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="nt">article</span> <span class="p">{</span>
+<span class="nt">nav</span><span class="o">+</span><span class="k">&amp;</span>  <span class="p">{</span> <span class="nl">margin-top</span><span class="p">:</span><span class="m">0</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">//当包含父选择器标识符的嵌套规则被打开时，它不会像后代选择器那样进行拼接，而是&amp;被父选择器直接替换：nav+&amp; == nav+article</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>子组合选择器 ‘&gt;’,可以选一个元素的直接子元素 :</p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nt">article</span> <span class="nt">section</span> <span class="p">{</span> <span class="nl">margin</span><span class="p">:</span> <span class="m">5px</span> <span class="p">}</span><span class="c1">//这个会命中articel 下面的所有section元素</span>
+<span class="nt">article</span> <span class="o">&gt;</span> <span class="nt">section</span> <span class="p">{</span> <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="mh">#ccc</span> <span class="p">}</span><span class="c1">//这个只会命中articel下面紧跟着的的子元素中的section </span>
+<span class="c1">//假如用&gt;选择器，article下面还有一个div里面包含着section就不会被选中</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>同层相邻组合选择器 ‘+’ :</p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>  
+<span class="na">css</span><span class="err">(</span><span class="na">scss</span><span class="err">)</span><span class="p">:</span>
+<span class="n">header</span><span class="o">+</span><span class="n">p</span><span class="p">{</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="mh">#eb1658</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="na">html</span><span class="p">:</span>
+        <span class="o">&lt;</span><span class="n">header</span><span class="o">&gt;</span>
+            <span class="err">我是</span><span class="n">header</span><span class="err">元素</span>
+        <span class="o">&lt;/</span><span class="n">header</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+            <span class="err">我是紧跟着</span><span class="n">header</span><span class="err">的</span><span class="n">p1</span><span class="err">元素</span><span class="o">//</span><span class="err">选中</span>
+        <span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+            <span class="err">我是不会被相邻组合选择器选中的</span><span class="n">p2</span><span class="err">元素</span><span class="o">//</span><span class="err">未选中</span>
+        <span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>同层全体组合选择器 ‘~’ :</p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="na">css</span><span class="err">(</span><span class="na">scss</span><span class="err">)</span><span class="p">:</span>
+<span class="n">header</span><span class="o">~</span><span class="n">p</span><span class="p">{</span>
+        <span class="nl">color</span><span class="p">:</span> <span class="mh">#eb1658</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="na">html</span><span class="p">:</span>
+        <span class="o">&lt;/</span><span class="n">header</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+            <span class="err">我是紧跟着</span><span class="n">header</span><span class="err">的</span><span class="n">p1</span><span class="err">元素</span><span class="o">//</span><span class="err">选中</span>
+        <span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="err">我是中间的</span><span class="n">h2</span><span class="err">元素</span><span class="o">//</span><span class="err">掠过</span>
+        <span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+            <span class="err">我是</span><span class="n">p2</span><span class="o">//</span><span class="err">选中</span>
+        <span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+            <span class="err">测试是否选择同层全部</span><span class="o">//</span><span class="err">选中</span>
+        <span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>这些组合选择器可以毫不费力地应用到<code class="highlighter-rouge">sass</code>的规则嵌套中。可以把它们放在外层选择器后边，或里层选择器前边：</p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="nt">article</span> <span class="p">{</span>
+  <span class="o">~</span> <span class="nt">article</span> <span class="p">{</span> <span class="nl">border-top</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">dashed</span> <span class="mh">#ccc</span> <span class="p">}</span>
+  <span class="o">&gt;</span> <span class="nt">section</span> <span class="p">{</span> <span class="nl">background</span><span class="p">:</span> <span class="mh">#eee</span> <span class="p">}</span>
+  <span class="nt">dl</span> <span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nt">dt</span> <span class="p">{</span> <span class="nl">color</span><span class="p">:</span> <span class="mh">#333</span> <span class="p">}</span>
+    <span class="nt">dd</span> <span class="p">{</span> <span class="nl">color</span><span class="p">:</span> <span class="mh">#555</span> <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nt">nav</span> <span class="o">+</span> <span class="k">&amp;</span> <span class="p">{</span> <span class="nl">margin-top</span><span class="p">:</span> <span class="m">0</span> <span class="p">}</span><span class="c1">//nav + article { margin-top: 0 }</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>嵌套属性:
+嵌套属性的规则是这样的：把属性名从中划线-的地方断开，在根属性后边添加一个冒号:，紧跟一个<code class="highlighter-rouge">{ }</code>块，把子属性部分写在这个<code class="highlighter-rouge">{ }</code>块中。就像<code class="highlighter-rouge">css</code>选择器嵌套一样，<code class="highlighter-rouge">sass</code>会把你的子属性一一解开，把根属性和子属性部分通过中划线-连接起来，最后生成的效果与你手动一遍遍写的<code class="highlighter-rouge">css</code>样式一样：</p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="nt">nav</span><span class="p">{</span>
+    <span class="nl">border</span><span class="p">:{</span><span class="c1">//会将这里的:编译成- ,拼接到{}块中的属性中</span>
+        <span class="nt">style</span><span class="nd">:solid</span><span class="p">;</span>
+        <span class="nl">width</span><span class="p">:</span><span class="m">1px</span><span class="p">;</span>
+        <span class="nl">color</span><span class="p">:</span><span class="mh">#ccc</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">//编译后：</span>
+<span class="nt">nav</span> <span class="p">{</span>
+  <span class="nl">border-style</span><span class="p">:</span> <span class="nb">solid</span><span class="p">;</span>
+  <span class="nl">border-width</span><span class="p">:</span> <span class="m">1px</span><span class="p">;</span>
+  <span class="nl">border-color</span><span class="p">:</span> <span class="mh">#ccc</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>甚至可以这样嵌套，指明例外规则:</p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="nt">nav</span> <span class="p">{</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="mh">#ccc</span> <span class="p">{</span>
+  <span class="nl">left</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+  <span class="nl">right</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">//编译后：</span>
+<span class="nt">nav</span> <span class="p">{</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="mh">#ccc</span><span class="p">;</span>
+  <span class="nl">border-left</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+  <span class="nl">border-right</span><span class="p">:</span> <span class="m">0px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>默认变量值  :一般情况下，你反复声明一个变量，只有最后一处声明有效且它会覆盖前边的值</p>
+  </li>
+  <li>
+    <p>可以理解成if not exists</p>
+
+    <p>默认变量在引入局部文件时会相对有意义，在scss编译文件中编写与直接赋值声明变量的区别不大</p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="nv">$link-color</span><span class="p">:</span> <span class="no">blue</span><span class="p">;</span>
+<span class="nv">$link-color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="nt">a</span> <span class="p">{</span>
+<span class="nl">color</span><span class="p">:</span> <span class="nv">$link-color</span><span class="p">;</span><span class="c1">//输出红色</span>
+<span class="p">}</span>
+  
+<span class="c1">//假如你写了一个可被他人通过@import导入的sass库文件，你可能希望导入者可以定制修改sass库文件中的某些值。使用sass的!default标签可以实现这个目的。它很像css属性中!important标签的对立面，不同的是!default用于变量，含义是：如果这个变量被声明赋值了，那就用它声明的值，否则就用这个默认值。</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>sass的import嵌套导入 _blue-theme文件</p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="na">_blue-theme</span><span class="err">文件内容</span><span class="p">:</span>
+<span class="n">p</span><span class="p">{</span>
+    <span class="nt">color</span><span class="nd">:red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">-------------------------------------------------------------------------------------------------------------------</span>
+<span class="nc">.req</span><span class="p">{</span>
+    <span class="k">@import</span> <span class="s2">"_blue-theme"</span>
+<span class="p">}</span>
+<span class="o">====</span><span class="err">以上输出</span><span class="o">===</span>
+<span class="nc">.req</span><span class="p">{</span>
+    <span class="nt">p</span><span class="p">{</span>
+        <span class="nt">color</span><span class="nd">:red</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>混合器:可以通过@mixin name 定义一个混合器，然后用@include 调用想用的混合器名称</p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="k">@mixin</span> <span class="nf">rounded-corners</span><span class="p">{</span>
+    <span class="na">-moz-border-radius</span><span class="p">:</span><span class="m">5px</span><span class="p">;</span>
+    <span class="nt">-webkit-border-radius5px</span><span class="p">;</span>
+    <span class="nl">border-radius</span><span class="p">:</span><span class="m">5px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">--------------------------------------------------------------------------------------------------------------</span>
+<span class="nc">.nav</span><span class="p">{</span>
+    <span class="nt">background</span><span class="nd">:black</span><span class="p">;</span>
+    <span class="k">@include</span> <span class="nd">rounded-coners</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//混合器可以使用css嵌套规则，也可以在混合器内使用class属性</span>
+<span class="c1">//允许通过语法$name: value 指定参数 ，这样参数顺序就不必再在乎了</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>继承：可以用@extend 不仅会继承他自身的样式，任何和他有关的组合选择器样式也会被继承：</p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="nc">.error</span> <span class="nt">a</span><span class="p">{</span>  <span class="c1">//应用到.seriousError a</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="m">100</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">h1</span><span class="nc">.error</span> <span class="p">{</span> <span class="c1">//应用到hl.seriousError</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">1</span><span class="mi">.2rem</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nc">.error</span> <span class="p">{</span><span class="c1">//被继承的类或元素</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="mh">#fdd</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.seriousError</span> <span class="p">{</span><span class="c1">//h1 a  的展示效果和.error的效果相同</span>
+  <span class="k">@extend</span> <span class="nc">.error</span><span class="p">;</span>
+  <span class="nl">border-width</span><span class="p">:</span> <span class="m">3px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+:ET

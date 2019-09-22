@@ -1,0 +1,154 @@
+I"�-<h1 id="827">8/27</h1>
+
+<h3 id="javascript">–Javascript</h3>
+
+<ul>
+  <li>关于重新定义this指向的上下文</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">fruits</span><span class="p">()</span> <span class="p">{}</span>
+<span class="nx">fruits</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">color</span><span class="p">:</span><span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">say</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">My color is </span><span class="dl">"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">color</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">apple</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">fruits</span><span class="p">;</span>
+<span class="nx">apple</span><span class="p">.</span><span class="nx">say</span><span class="p">();</span><span class="c1">//My color is red</span>
+<span class="kd">var</span> <span class="nx">banana</span><span class="o">=</span><span class="p">{</span>
+    <span class="na">color</span><span class="p">:</span><span class="dl">"</span><span class="s2">yellow</span><span class="dl">"</span>
+<span class="p">}</span>
+<span class="nx">apple</span><span class="p">.</span><span class="nx">say</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span> <span class="nx">banana</span> <span class="p">);</span><span class="c1">//将say方法中的this 指向banana;</span>
+<span class="nx">apple</span><span class="p">.</span><span class="nx">say</span><span class="p">();</span><span class="c1">//My color is yellow;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>
+    <p>prototype 属性的作用:
+每个函数都有一个prototype属性，指向一个对象;
+对于普通函数来说，该对象基本无用，但对于构造函数来说，生成实例的时候，该属性会自动生成实例对象的模型</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">Animal</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">Animal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">white</span><span class="dl">'</span><span class="p">;</span><span class="c1">//生成原型</span>
+  
+<span class="kd">var</span> <span class="nx">cat1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="dl">'</span><span class="s1">大毛</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">cat2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="dl">'</span><span class="s1">二毛</span><span class="dl">'</span><span class="p">);</span>
+  
+<span class="nx">cat1</span><span class="p">.</span><span class="nx">color</span> <span class="c1">// 'white'</span>
+<span class="nx">cat2</span><span class="p">.</span><span class="nx">color</span> <span class="c1">// 'white'</span>
+<span class="c1">//--------------------------------------------------</span>
+<span class="nx">Animal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">color</span><span class="o">=</span><span class="dl">'</span><span class="s1">yellow</span><span class="dl">'</span><span class="p">;</span><span class="c1">//原型对象的属性发生改变</span>
+<span class="nx">cat1</span><span class="p">.</span><span class="nx">color</span> <span class="c1">// 'yellow'</span>
+<span class="nx">cat2</span><span class="p">.</span><span class="nx">color</span> <span class="c1">// 'yellow'</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>上文中，原型对象发生改变后，实例化的color也发生了改变，是因为<code class="highlighter-rouge"> 原型对象的属性不是实例对象自身的属性，只要原型对象的属性发生了改变，这些改变就会立刻体现在所有实例化对象身上</code></p>
+
+    <ul>
+      <li>使用原型对象的好处是 ?
+如果在一个函数内声明了一个方法，这样每实例化一个函数就会创造一样的方法，这样集没有必要也浪费系统资源，但如果使用原型对象，只需要创建一遍原型对象的方法，就可以体现到所有实例化对象中</li>
+    </ul>
+  </li>
+  <li>
+    <p>读取某个对象的属性时，javascript先去对象本身去找，找不到再去原型去找，还是找不到就去原型的原型去找，直到找到最顶层的object.prototype还是找不到，则返回Null
+如果对象本身和原型都定一个相同的属性，优先读取对象本身的属性，这叫做覆盖</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="c1">//注意，一级级向上，在整个原型链上寻找某个属性，对性能是有影响的。所寻找的属性在越上层的原型对象，对性能的影响越大。如果寻找某个不存在的属性，将会遍历整个原型链。</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">prototype</code>对象有一个<code class="highlighter-rouge">constructor</code>属性，默认指向<code class="highlighter-rouge">prototype</code>对象所在的构造函数。
+有了Constructor属性，可以从一个对象实例新建另一个对象实例</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kd">function</span> <span class="nx">p</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="o">=</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">P</span><span class="o">=</span><span class="k">new</span> <span class="nx">p</span><span class="p">(</span><span class="dl">'</span><span class="s1">Bert</span><span class="dl">'</span><span class="p">);</span><span class="c1">//实例化一个对象</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">P</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span><span class="c1">//Bert</span>
+<span class="kd">var</span> <span class="nx">A</span><span class="o">=</span><span class="k">new</span> <span class="nx">P</span><span class="p">.</span><span class="kd">constructor</span><span class="p">(</span><span class="dl">"</span><span class="s2">Rocky</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">A</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span><span class="c1">//Rocky</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>将实例化对象的</p>
+  </li>
+  <li>
+    <p>JavaScript 不允许对<code class="highlighter-rouge">undefined</code>添加属性</p>
+  </li>
+</ul>
+
+<h3 id="-react">-React</h3>
+
+<ul>
+  <li>
+    <p>call,apply,bind第一个参数都是this的指向对象，差别在第二个参数:
+call参数是直接放进去的，apply所有的参数都必须放进一个数组传进去,bind参数也必须放进一个数组传进去，但是bind返回的是一个函数，并不立刻执行;</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nx">obj</span><span class="p">.</span><span class="nx">myFun</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">db</span><span class="p">,[</span><span class="dl">'</span><span class="s1">成都</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">上海</span><span class="dl">'</span><span class="p">])()</span><span class="cm">/*立刻执行*/</span>	<span class="p">:</span>	<span class="nx">obj</span><span class="p">.</span><span class="nx">myFun</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">db</span><span class="p">,[</span><span class="dl">'</span><span class="s1">成都</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">上海</span><span class="dl">'</span><span class="p">]);</span><span class="c1">//不立刻执行;</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>maxInNumbers = Math.max.apply(Math, numbers),</p>
+
+    <p>//个人理解：要对Math使用max方法，使用这个方法的参数是numbers;</p>
+
+    <p>Array.prototype.push.apply(array1, array2); 
+//要对array1使用push方法，需要push的参数是array2</p>
+  </li>
+  <li>
+    <p>在es6中使用计算机属性名:</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">key</span><span class="o">=</span><span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">lt</span><span class="o">=</span><span class="p">{</span>
+    <span class="p">[</span><span class="nx">key</span><span class="p">]:</span><span class="dl">"</span><span class="s2">bert</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">age</span><span class="p">:</span><span class="dl">"</span><span class="s2">22</span><span class="dl">"</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+:ET

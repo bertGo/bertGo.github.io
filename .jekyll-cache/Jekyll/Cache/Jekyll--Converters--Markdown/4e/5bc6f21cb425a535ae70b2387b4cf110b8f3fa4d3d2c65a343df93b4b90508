@@ -1,0 +1,39 @@
+I"�<h3 id="javascript">Javascript</h3>
+
+<ul>
+  <li>
+    <p>toLowerCase() 方法用于把字符串转换为小写。</p>
+  </li>
+  <li>
+    <p>JSON.parse()用于把数据转换成对象格式</p>
+  </li>
+  <li>
+    <p>Object.keys( obj ) 用于得到指定对象的key值</p>
+  </li>
+  <li>
+    <p>将post字符串转换成json格式：</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">a</span><span class="o">=</span><span class="dl">"</span><span class="s2">name=bbbbbbb&amp;password=bbbbbbbb</span><span class="dl">"</span><span class="p">;</span>
+  
+<span class="nx">a</span><span class="o">=</span><span class="nx">querystring</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span><span class="c1">//{ name: 'bbbbbbb', password: 'bbbbbbbb' }</span>
+  
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>try</strong>语句允许我们定义在执行时进行错误测试的代码块。</p>
+
+    <p><strong>catch</strong> 语句允许我们定义当 <strong>try</strong> 代码块发生错误时，所执行的代码块。</p>
+
+    <p><strong>finally</strong> 语句在 try 和 catch 之后无论有无异常都会执行。</p>
+
+    <p>throw语句在try内，指定条件发生后执行</p>
+  </li>
+  <li>
+    <p>push() 方法可向数组的末尾添加一个或多个元素，并返回新的长度。</p>
+  </li>
+</ul>
+:ET

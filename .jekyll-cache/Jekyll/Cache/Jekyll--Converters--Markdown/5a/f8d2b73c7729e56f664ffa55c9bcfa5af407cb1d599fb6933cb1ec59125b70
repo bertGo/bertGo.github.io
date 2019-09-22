@@ -1,0 +1,101 @@
+I"�<h1 id="830">8/30</h1>
+
+<h3 id="react">–React</h3>
+
+<ul>
+  <li>
+    <p>关于高级函数的传递参数顺序:</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="kd">function</span> <span class="nx">serach</span> <span class="p">(</span><span class="nx">arrs</span><span class="p">)</span><span class="o">=&gt;</span><span class="nx">item</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="k">return</span> <span class="nx">item</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">includes</span><span class="p">(</span><span class="nx">arrs</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">());</span>
+<span class="p">}</span>
+  
+<span class="nx">arr</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">serach</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="c1">//这里的2其实是传递到了arrs上</span>
+<span class="c1">//这里的item接收的参数是filter前面的arr</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>表单元素比如 <input /> , <textarea> 和 <select> 会以原生 HTML 的形式保存他
+们自己的状态。一旦有人从外部做了一些修改,它们就会修改内部的值,在 React 中这被
+称为不受控组件,因为它们自己处理状态。在 React 中,你应该确保这些元素变为受控组
+件。</select></textarea></p>
+  </li>
+</ul>
+
+<h3 id="es6">–ES6</h3>
+
+<ul>
+  <li>
+    <p>解构：</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="c1">//对象解构</span>
+<span class="kd">const</span> <span class="nx">user</span><span class="o">=</span><span class="p">{</span>
+    <span class="na">first_name</span><span class="p">:</span><span class="dl">"</span><span class="s2">bert</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">last_name</span><span class="p">:</span><span class="dl">"</span><span class="s2">berg</span><span class="dl">"</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="p">{</span><span class="nx">first_name</span><span class="p">,</span><span class="nx">last_name</span><span class="p">}</span><span class="o">=</span><span class="nx">user</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">first_name</span><span class="o">+</span><span class="dl">"</span><span class="s2">+</span><span class="dl">"</span><span class="o">+</span><span class="nx">last_name</span><span class="p">);</span><span class="c1">//bert+berg</span>
+<span class="c1">//数组解构</span>
+<span class="kd">const</span> <span class="nx">users</span><span class="o">=</span><span class="p">[</span><span class="dl">'</span><span class="s1">Robin</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">Rocky</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">Dan</span><span class="dl">'</span><span class="p">];</span>
+<span class="kd">const</span> <span class="p">[</span>
+    <span class="nx">users_one</span><span class="p">,</span>
+    <span class="nx">users_two</span><span class="p">,</span>
+    <span class="nx">users_three</span>
+<span class="p">]</span><span class="o">=</span><span class="nx">users</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>注意事项：对象解构缩写时，继承的属性名称要和原属性相同;数组和对象继承时，可以少继承，但是不能多继承；</p>
+
+    <p>解构相当于将其拼接在了一起</p>
+  </li>
+  <li></li>
+</ul>
+
+<h3 id="js">–js</h3>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>只要“</td>
+          <td> </td>
+          <td>”前面为false，无论“</td>
+          <td> </td>
+          <td>”后面是true还是false，结果都返回“</td>
+          <td> </td>
+          <td>”后面的值。只要“</td>
+          <td> </td>
+          <td>”前面为true，无论“</td>
+          <td> </td>
+          <td>”后面是true还是false，结果都返回“</td>
+          <td> </td>
+          <td>”前面的值。只要“&amp;&amp;”前面是false，无论“&amp;&amp;”后面是true还是false，结果都将返“&amp;&amp;”前面的值;只要“&amp;&amp;”前面是true，无论“&amp;&amp;”后面是true还是false，结果都将返“&amp;&amp;”后面的值;</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+:ET

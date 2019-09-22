@@ -1,0 +1,15 @@
+I"�<h1 id="811">8.11</h1>
+
+<h3 id="npm">npm</h3>
+
+<ul>
+  <li>
+    <p>npm 更新指定模块到最新版本</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>npm i node@latest
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+:ET

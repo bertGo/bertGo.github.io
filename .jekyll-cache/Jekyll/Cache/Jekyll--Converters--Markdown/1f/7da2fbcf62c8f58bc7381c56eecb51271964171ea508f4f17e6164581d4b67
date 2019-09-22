@@ -1,0 +1,188 @@
+I"�#<h1 id="82">8/2</h1>
+
+<h3 id="bootstrap">Bootstrap</h3>
+
+<ul>
+  <li>
+    <p>Bootstrap从 Staticcfile CDN 引用库</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="c">&lt;!-- 新 Bootstrap4 核心 CSS 文件 --&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css"</span><span class="nt">&gt;</span>
+   
+<span class="c">&lt;!-- jQuery文件。务必在bootstrap.min.js 之前引入 --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+   
+<span class="c">&lt;!-- popper.min.js 用于弹窗、提示、下拉菜单 --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+   
+<span class="c">&lt;!-- 最新的 Bootstrap4 核心 JavaScript 文件 --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>通过插入<code class="highlighter-rouge">.w-100</code>要将列拆分到新行的位置，创建跨越多行的等宽列。&lt;div class="w-100"&gt;&lt;/div&gt;&lt;div&gt;</p>
+  </li>
+  <li>
+    <p>Bootstrap v4网格系统有五层类：xs（超小），sm（小），md（中），lg（大）和xl（超大） 设置五个不同的类，五个类在设置同样的数字的情况下，窗口缩小时xl首先层叠，窗口扩大时xl首先水平堆积;</p>
+  </li>
+  <li>
+    <p>使用一组<code class="highlighter-rouge">.col-sm-*</code>类，您可以创建一个基本的网格系统，它开始堆叠并在小断点处变为水平（<code class="highlighter-rouge">sm</code>）。<也就是窗口在小到一定程度后会自动换行水平铺出去></也就是窗口在小到一定程度后会自动换行水平铺出去></p>
+  </li>
+  <li>
+    <p>格栅系统的层级关系:第一层为cotainer ,第二层为row,第三层为col ，要正确处理层级关系，格栅系统才会正确的运行;</p>
+  </li>
+  <li>
+    <p>如果在一行中放置超过12列，则每组额外列将作为一个单元包裹到新行上。后续列延新行继续col9 col4 9+4&gt;12</p>
+  </li>
+  <li>
+    <p>可以通过order类来控制col可视顺序 col order-1;col order-12;col order -last;</p>
+  </li>
+  <li>
+    <p>使用offset-md-* 来增加列的左边距， 例如offset-md-4移动col-md-4四列:col-md-4 offset-md-4</p>
+  </li>
+  <li>
+    <p>使用Bootstrap的源Sass文件时，您可以选择使用Sass变量和mixins来创建自定义，语义和响应式页面布局：</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>$gid-breakpoints:(xs:0,sm:576px,md:768px);
+混入,生成语义css
+@include make-col($gid-breakpoints);
+用法示例:
+.class{
+width:800px;
+@include make-col();
+}
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>bootstrap媒体查询</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>  
+@media (max-width: 767px) {  
+    /*在小于768像素的屏幕里,这里的样式才生效*/  
+}  
+@media (min-width: 768px) and (max-width: 991px) {  
+    /*在768和991像素之间的屏幕里,这里的样式才生效*/  
+}  
+@media (min-width: 992px) and (max-width: 1199px) {  
+    /*在992和1199像素之间的屏幕里,这里的样式才生效*/  
+}  
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>原生css:
+flex-direction
+flex-direction 属性指定了弹性子元素在父容器中的位置。
+语法
+  
+flex-direction: row | row-reverse | column | column-reverse
+  
+flex-direction的值有:
+  
+    row：横向从左到右排列（左对齐），默认的排列方式。
+    row-reverse：反转横向排列（右对齐，从后往前排，最后一项排在最前面。
+    column：纵向排列。
+    column-reverse：反转纵向排列，从后往前排，最后一项排在最上面。
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>target=”view_window” 在一个新的窗口打开内容
+target=”view_frame” 带入框架中</p>
+  </li>
+  <li>
+    <p>在 Bootstrap 4 中 HTML <small> 元素用于创建字号更小的颜色更浅的文本:</small></p>
+  </li>
+  <li>
+    <p>四个display标题样式，display-1  -4 用来创建更大的标题</p>
+  </li>
+  <li>
+    <tr>是用来切换行的 <th> 是用来切换列的
+
+</th></tr>
+  </li>
+  <li>
+    <p>.img-responsive 图片响应布局 /img-fluid bootstrap 图片响应布局 两者的区别是fluid的图片响应布局会更精准，可以匹配更小的页面</p>
+  </li>
+  <li>
+    <p>表格导航或标签 以一个带有class.nav的无序列表开始，</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;</span> <span class="nt">ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span><span class="nt">&gt;</span>//标签式导航菜单
+<span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>SVN<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>iOS<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>VB.Net<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Java<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>PHP<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills"</span><span class="nt">&gt;</span>//胶囊式导航菜单
+     <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>SVN<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>iOS<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>VB.Net<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Java<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>PHP<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>可以在通过分别使用nav nav-pills nav-tabs 的同时使用 class.nav-justified 让标签或者胶囊导航菜单与父元素等宽,在更小的屏幕上，导航链接会堆叠/实现响应式布局</li>
+</ul>
+:ET

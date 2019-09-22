@@ -1,0 +1,88 @@
+I"�
+<h1 id="730">7/30</h1>
+
+<h3 id="html标签">HTML标签:</h3>
+
+<ul>
+  <li>
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;address&gt;</span> 标签定义文档或文章的作者/拥有者的联系信息。
+ <span class="nt">&lt;hr&gt;</span>  横杠
+    
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="html属性">HTML属性:</h3>
+
+<ul>
+  <li>
+    <h5 id="全局属性">全局属性</h5>
+
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre>	contenteditable =	
+属性指定元素内容是否可编辑<span class="nt">&lt;p</span> <span class="na">contenteditable=</span><span class="s">"true|false"</span><span class="nt">&gt;&lt;/p&gt;</span>
+	data-<span class="err">*</span> =	
+data 自定义属性，取值必须用小写，使用这样的结构可以进行数据存放 ，使用data- <span class="err">*</span> 可以解决自定义属性混乱无管理的现状" 
+	{
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"testDiv"</span> <span class="na">data-cartCd=</span><span class="s">"24"</span><span class="nt">&gt;</span>
+    Click Here
+<span class="nt">&lt;/div&gt;</span>
+	取值：var testDiv = document.getElementById('testDiv');
+	var cartcd=testDiv.dataset.cratcd;//注意是cartcd 不管是不是驼峰命名，一切都是小写
+		}
+		draggable:
+指定元素是否可以被拖动针
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>widow事件属性</p>
+
+    <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre>	onresize:
+当浏览器 窗口被调整大小时执行,应用在body标签
+	onselect:
+input 内元素的文本被选中后执行
+	onfocus:
+属性在元素获得焦点时触发 
+	onblur:
+属性在元素失去焦点时触发
+	onmousedown
+按住鼠标时触发
+	onmouseup
+松开鼠标时触发
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="html属性-1">HTML属性</h3>
+
+<ul>
+  <li>autocomplete=”off” input刷新后不保存上次的值</li>
+  <li>设置setAttribute属性以及getAttribute属性时，都需要套双引号</li>
+</ul>
+:ET

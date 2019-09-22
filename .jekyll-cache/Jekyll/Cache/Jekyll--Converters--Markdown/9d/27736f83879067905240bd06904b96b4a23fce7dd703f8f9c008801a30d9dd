@@ -1,0 +1,162 @@
+I"�&<h3 id="sass">SASS</h3>
+
+<ul>
+  <li>
+    <p>@extend 继承中，可以将一个元素的规则继承给类，比如：</p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="nt">a</span><span class="p">{</span>
+	<span class="nl">font-size</span><span class="p">:</span><span class="m">30px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">-----------------------------------------------------</span><span class="o">===========</span><span class="nt">--------------------------------------</span><span class="o">=========</span><span class="nt">---</span>
+<span class="nc">.disabled</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="no">gray</span><span class="p">;</span>
+  <span class="k">@extend</span> <span class="nt">a</span><span class="p">;</span><span class="c1">//这时候.disabled的字体大小也会变成30px;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>继承的编译方式:</p>
+
+    <div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre><span class="na">scss</span><span class="p">:</span>
+<span class="n">h1</span> <span class="o">.</span><span class="n">extend</span><span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">white</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.extend</span><span class="p">{</span>
+    <span class="nt">color</span><span class="nd">:blue</span><span class="p">;</span>
+    <span class="nt">p</span><span class="p">{</span>
+        <span class="nt">color</span> <span class="nd">:red</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="nc">.dis</span><span class="p">{</span>
+    <span class="k">@extend</span> <span class="nc">.extend</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">===============================</span><span class="err">编译后</span><span class="o">=========================================</span>
+<span class="nt">h1</span><span class="nc">.extend</span><span class="o">,</span><span class="nt">h1</span><span class="nc">.dis</span><span class="p">{</span>
+    <span class="nt">color</span><span class="nd">:white</span><span class="p">;}</span>
+  
+<span class="nc">.extend</span><span class="o">,</span><span class="nc">.dis</span><span class="p">{</span>
+    <span class="nt">color</span><span class="nd">:blue</span><span class="p">;}</span>
+  
+<span class="nc">.extend</span> <span class="nt">p</span><span class="o">,</span> <span class="nc">.dis</span> <span class="nt">p</span><span class="p">{</span>
+    <span class="nt">color</span><span class="nd">:red</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <h3 id="弹性盒子">弹性盒子</h3>
+
+    <ul>
+      <li>用display:flex定义一个弹性盒子的容器</li>
+      <li>justify-content:定定义对齐方式:
+        <ul>
+          <li>center 居中紧挨着填充</li>
+          <li>flex-start向行头紧挨着填充</li>
+          <li>flex-end 向行尾紧挨着填充</li>
+          <li>flex-between:项目平均分布在该行上,如果空间为负或者只有一个弹性项,则等同于flexstart;</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="jquery">JQuery</h3>
+
+<h4 id="基本选择器">基本选择器</h4>
+
+<ul>
+  <li>按属性查找:<code class="highlighter-rouge">var email = $('[name=email]'); // 找出&lt;??? name="email"&gt;</code></li>
+  <li><code class="highlighter-rouge">var email = $("[name^=email]");</code> 搜索name值以email开头的DOM</li>
+  <li><code class="highlighter-rouge">var email = $("[nam$=email]");</code> 搜索name值以email结尾的DOM</li>
+  <li><code class="highlighter-rouge">var email=$('input[name=email]');</code> 搜索input中 name值是email的DOM</li>
+  <li><code class="highlighter-rouge">var number=$('div.red');</code> 搜索DIV中，class名是red的DOM</li>
+  <li><code class="highlighter-rouge">var selected=$('p.color-red,input[name=email]');</code>搜索p标签中类名是color-red的DOM和input标签中name属性值为email的DOM</li>
+  <li><code class="highlighter-rouge">$('p.color-red.color-green');</code> 搜索p标签中类名为color-red且包含color-green的DOM节点,之间没有空格</li>
+</ul>
+
+<h4 id="层级选择器">层级选择器</h4>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">$('ul.lang li.lang-javascript'); </code> 选择ul类名是lang下面的li类名是lang-…..的DOM节点</p>
+  </li>
+  <li>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">div:visible</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// 所有可见的div</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">div:hidden</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// 所有隐藏的div</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">number=$('div.testing&gt;li.lang-lua');</code>层级选择器’&gt;’,li必须为div 的直接子元素,孙元素不行</p>
+  </li>
+  <li>
+    <p>find(),查找</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="c">&lt;!--</span> <span class="nx">HTML</span><span class="err">结构</span> <span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="nx">ul</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">lang</span><span class="dl">"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">li</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">js dy</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">JavaScript</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">li</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">dy</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Python</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">swift</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Swift</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">li</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">dy</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Scheme</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">haskell</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Haskell</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>  
+<span class="err">用</span><span class="nx">find</span><span class="p">()</span><span class="err">查找：</span>
+  
+<span class="kd">var</span> <span class="nx">ul</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">ul.lang</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// 获得&lt;ul&gt;</span>
+<span class="kd">var</span> <span class="nx">dy</span> <span class="o">=</span> <span class="nx">ul</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">.dy</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// 获得JavaScript, Python, Scheme</span>
+<span class="kd">var</span> <span class="nx">swf</span> <span class="o">=</span> <span class="nx">ul</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">#swift</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// 获得Swift</span>
+<span class="kd">var</span> <span class="nx">hsk</span> <span class="o">=</span> <span class="nx">ul</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">[name=haskell]</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// 获得Haskell</span>
+  
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>.parent()寻找上层节点,没有返回undefind,括号内加筛选的条件,只会往上寻找一层节点
+<code class="highlighter-rouge">number.parent('.long');</code></li>
+</ul>
+
+:ET

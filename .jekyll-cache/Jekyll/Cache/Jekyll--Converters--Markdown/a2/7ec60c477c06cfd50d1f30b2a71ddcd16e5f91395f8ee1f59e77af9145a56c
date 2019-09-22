@@ -1,0 +1,45 @@
+I"F<h3 id="代码">代码:</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">a</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="o">*</span><span class="n">p1</span><span class="err">；</span>
+     <span class="n">p1</span><span class="o">=&amp;</span><span class="n">a</span><span class="p">;</span>
+	<span class="n">fprintf</span><span class="p">(</span><span class="n">stdout</span><span class="p">,</span><span class="s">"pointer = %d </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="o">*</span><span class="n">p1</span><span class="p">);</span>
+	<span class="n">p1</span><span class="o">++</span><span class="p">;</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h4 id="gdb调试">gdb调试</h4>
+
+<p>p &amp;p1(打印p1本身的地址)：   0x7fffffffe560
+p &amp;*p1(打印p1指针指向的地址): 0x7fffffffe650</p>
+
+<h4 id="p1之后-">—————————–p1++之后	—————————</h4>
+
+<p>p &amp;p1(打印p1本身的地址)：  0x7fffffffe560 (没变)</p>
+
+<p>p &amp;*p1(打印p1指针指向的地址):	0x7fffffffe560 (发生了改变，指向了p1本身)</p>
+
+<p>p *p1（打印p1指针指向的地址取值) :	-6816
+ p  0x7fffffffe560(根据p1指针指向的地址取值) :	140737488348512   (这里为什么不一样)</p>
+
+<h4 id="问题描述">问题描述：</h4>
+
+<p>既然p1这个指针 指向的内存地址 是p1本身，那为什么打印p1的内存地址所显示的值和打印指针所指向的内存地址的值会不一样？;</p>
+
+:ET

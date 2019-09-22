@@ -1,0 +1,225 @@
+I"AH<h3 id="javascript">JavaScript</h3>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>js书写正则的正确写法:var patt=new RegExp(/^1(3</td>
+          <td>5</td>
+          <td>7</td>
+          <td>8)\d{9}$/);   var val=patt.test(str);</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>获取当前时间戳，精确到毫秒 var timestr=new Date().getTime();</li>
+</ul>
+
+<h3 id="linux">Linux</h3>
+
+<ul>
+  <li>元数据中的 inode 号（inode 是文件元数据的一部分但其并不包含文件名，inode 号即索引节点号）才是文件的唯一标识而非文件名,文件只是为了方便人们记忆和使用,系统或程序通过inode号寻找正确的文件数据块</li>
+  <li>在 Linux 系统中查看 inode 号可使用命令 stat 或 ls -i</li>
+  <li>若一个inode号对应多个文件，那么他就是硬连接，换而言之就是一个文件使用了多个别名</li>
+</ul>
+
+<h3 id="nodejs">Node.js</h3>
+
+<ul>
+  <li>node –use_strict filename  以严格模式运行文件</li>
+  <li>exports 和moudle.exports 的区别是
+    <ul>
+      <li>exports使用方法是:  exports.[function name]=[function name] 后面是生成的新函数名</li>
+      <li>moudle.exports 方式使用方法是: moudle.exports=[function name]
+        <ul>
+          <li>使用上的区别是：exports的方法可以直接调用，module.exports 需要new对象之后才可以调用</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>在函数页面写:module.exports=greet;在需要引用的页面写var greet=require(‘./hello.js’);就能获取相应的函数</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">var fs = require('fs');</code>  引用内部模块名为fs的模块，赋值给fs变量</p>
+  </li>
+  <li>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">sample.txt</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">utf-8</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="err">同步读取文件，直接返回值</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>异步覆盖写入文件：</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Hello, Node.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">output.txt</span><span class="dl">'</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>同步写入文件</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Hello, Node.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">fs</span><span class="p">.</span><span class="nx">writeFileSync</span><span class="p">(</span><span class="dl">'</span><span class="s1">output.txt</span><span class="dl">'</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>如果我们要获取文件大小，创建时间等信息，可以使用<code class="highlighter-rouge">fs.stat()</code>，它返回一个<code class="highlighter-rouge">Stat</code>对象，能告诉我们文件或目录的详细信息：</p>
+  </li>
+  <li>
+    <p>stat.isFile();.isDirectory();.size ; birthtime ; mtime ;</p>
+  </li>
+  <li>
+    <p>由于Node环境执行的JavaScript代码是服务器端代码，所以，绝大部分需要在服务器运行期反复执行业务逻辑的代码，<em>必须使用异步代码</em>，否则，同步代码在执行时期，服务器将停止响应，因为JavaScript只有一个执行线程。</p>
+  </li>
+  <li>
+    <p>打开一个文件流</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>	<span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="dl">"</span><span class="s2">sample.txt</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>从文件流读取：</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">fs</span><span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">rs</span><span class="o">=</span><span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="dl">"</span><span class="s2">sample.txt</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">rs</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">chunk</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">chunk</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">rs</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">END</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">rs</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">error</span><span class="dl">'</span><span class="p">,</span><span class="kd">function</span><span class="p">()){</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">ERROR:</span><span class="dl">"</span><span class="o">+</span><span class="nx">err</span><span class="p">);</span>
+      <span class="p">};</span>
+<span class="err">要注意，</span><span class="nx">data</span><span class="err">事件可能会有多次，每次传递的</span><span class="nx">chunk</span><span class="err">是流的一部分数据。</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>写入文件流：</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">fs</span><span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fs</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">wr</span><span class="o">=</span><span class="nx">fs</span><span class="p">.</span><span class="nx">createWriteStream</span><span class="p">(</span><span class="dl">"</span><span class="s2">sample.txt</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">wr</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">"</span><span class="s2">写入文件流</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">wr</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="k">new</span> <span class="nx">Buffer</span><span class="p">(</span><span class="dl">"</span><span class="s2">写入二进制文件流</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span><span class="p">));</span>
+<span class="c1">//结束写入</span>
+<span class="nx">wr</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>重定向/导流:</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">fs</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">rd</span><span class="o">=</span><span class="nx">fs</span><span class="p">.</span><span class="nx">createReadStream</span><span class="p">(</span><span class="dl">"</span><span class="s2">sample.txt</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">wr</span><span class="o">=</span><span class="nx">fs</span><span class="p">.</span><span class="nx">createWriteStream</span><span class="p">(</span><span class="dl">"</span><span class="s2">copied.txt</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">utf-8</span><span class="dl">"</span><span class="p">);</span>
+<span class="c1">//默认情况下，readable流的数据读取完毕，end事件触发后，会关闭writable，如果不希望 关闭，需传入参数:</span>
+<span class="nx">rd</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">wr</span><span class="p">,{</span><span class="na">end</span><span class="p">:</span><span class="kc">false</span><span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>编写HTTP服务器程序</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">http</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">http</span><span class="dl">"</span><span class="p">);</span>
+<span class="c1">//创建http server,并传入回调函数</span>
+<span class="kd">var</span> <span class="nx">server</span><span class="o">=</span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">request</span><span class="p">,</span><span class="nx">response</span><span class="p">){</span>
+    <span class="c1">//回调函数接受request和response对象</span>
+    <span class="c1">//获得HTTP请求method和url</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span><span class="o">+</span><span class="dl">"</span><span class="s2">:</span><span class="dl">"</span><span class="o">+</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+    <span class="c1">//将http响应200写入response，同时设置content-type和text/html</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,{</span><span class="dl">"</span><span class="s2">Content-type</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">text/html</span><span class="dl">"</span><span class="p">});</span>
+    <span class="c1">//将http响应的HTML内容写入response;</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;h1&gt;HELLO world&lt;/h1&gt;</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">})</span>
+<span class="c1">//让服务器监听8080端口;</span>
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8080</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">服务器正在监听http://127.0.0.1:8080</span><span class="dl">"</span><span class="p">);</span>
+
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>
+    <p>通过<code class="highlighter-rouge">parse()</code>将一个字符串解析为一个<code class="highlighter-rouge">Url</code>对象;</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">url</span><span class="dl">'</span><span class="p">);</span>
+  
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://user:pass@host.com:8080/path/to/file?query=string#hash</span><span class="dl">'</span><span class="p">));</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>利用path目录构造模块</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1">//利用path模块构造目录</span>
+<span class="kd">var</span> <span class="nx">path</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">path</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">nowDir</span><span class="o">=</span><span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">.</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">newDir</span><span class="o">=</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">nowDir</span><span class="p">,</span><span class="dl">'</span><span class="s1">public</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">index.html</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">newDir</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>process.argv命令：</p>
+  </li>
+  <li>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">abcd</span><span class="o">/</span><span class="nx">php</span><span class="o">/</span><span class="nx">Nodejs</span><span class="o">/</span><span class="nx">fs</span><span class="p">.</span><span class="nx">js</span> <span class="nx">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="err">显示是</span> <span class="err">目前文件的路径</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+:ET

@@ -1,0 +1,58 @@
+I"�<h3 id="es6">–ES6</h3>
+
+<ul>
+  <li>
+    <p>一些函数库提供<code class="highlighter-rouge">Object.assign</code>的定制版本（比如 Lodash 的<code class="highlighter-rouge">_.defaultsDeep</code>方法），可以得到深拷贝的合并。</p>
+  </li>
+  <li>
+    <p>利用Object.assign()为对象添加方法</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">(</span><span class="nx">SomeClass</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,{</span>
+        <span class="nx">someMethod</span><span class="p">(){</span>
+  
+        <span class="p">},</span>
+        <span class="nx">anotherMethod</span><span class="p">(){</span>
+  
+        <span class="p">}</span>
+    <span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Object.defineProperties(),该方法直接在一个对象上定义新的属性或修改现有属性，并返回新的对象</p>
+  </li>
+  <li>
+    <p>Object.getOwnPropertyDescriptors(),该方法返回给定对象的所有属性描述符;</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">__proto__</code>属性（前后各两个下划线），用来读取或设置当前对象的<code class="highlighter-rouge">prototype</code>对象。目前，所有浏览器（包括 IE11）都部署了这个属性。</p>
+
+    <ul>
+      <li>只是一个内部属性，并不是对外开放的API，用以下代替：
+<code class="highlighter-rouge">Object.setPrototypeOf()</code>（写操作）、<code class="highlighter-rouge">Object.getPrototypeOf()</code>（读操作）、<code class="highlighter-rouge">Object.create()</code>（生成操作）代替。</li>
+    </ul>
+  </li>
+  <li>
+    <p>sym.description直接返回symbol 的描述</p>
+  </li>
+  <li>
+    <p>任何一个<code class="highlighter-rouge">await</code>语句后面的 Promise 对象变为<code class="highlighter-rouge">reject</code>状态，那么整个<code class="highlighter-rouge">async</code>函数都会中断执行。</p>
+  </li>
+  <li>
+    <p>一旦遇到<code class="highlighter-rouge">await</code>就会先返回，等到异步操作完成，再接着执行函数体内后面的语句。</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">constructor</code>方法是类的默认方法，通过<code class="highlighter-rouge">new</code>命令生成对象实例时，自动调用该方法。一个类必须有<code class="highlighter-rouge">constructor</code>方法，如果没有显式定义，一个空的<code class="highlighter-rouge">constructor</code>方法会被默认添加。</p>
+  </li>
+  <li>
+    <p>ES6 为<code class="highlighter-rouge">new</code>命令引入了一个<code class="highlighter-rouge">new.target</code>属性，该属性一般用在构造函数之中，返回<code class="highlighter-rouge">new</code>命令作用于的那个构造函数,可以指定一个类是否可以被实例化</p>
+  </li>
+</ul>
+:ET

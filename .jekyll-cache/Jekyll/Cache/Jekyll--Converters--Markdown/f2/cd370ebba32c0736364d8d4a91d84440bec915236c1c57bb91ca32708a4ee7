@@ -1,0 +1,15 @@
+I"�<h1 id="912">9/12</h1>
+
+<h3 id="分享-xss">–分享 XSS</h3>
+
+<h4 id="五组">–五组</h4>
+
+<ul>
+  <li>xss平台，有内置的恶意代码模块</li>
+  <li>HttpOnly 设置成true ，使js无法对cookie进行操作</li>
+  <li>HtmlEncode 转义防御</li>
+  <li>在http请求中以参数的形式　加入一个随机产生的token</li>
+  <li>验证Referer字段</li>
+  <li><u>输入过滤，输出编码</u></li>
+</ul>
+:ET

@@ -1,0 +1,195 @@
+I";<h1 id="87">8/7</h1>
+
+<h3 id="jquery">JQuery</h3>
+
+<ul>
+  <li>
+    <h3 id="鼠标事件">鼠标事件</h3>
+
+    <p><code class="highlighter-rouge">click</code>: 鼠标单击时触发； <code class="highlighter-rouge">dblclick</code>：鼠标双击时触发； <code class="highlighter-rouge">mouseenter</code>：鼠标进入时触发； <code class="highlighter-rouge">mouseleave</code>：鼠标移出时触发； <code class="highlighter-rouge">mousemove</code>：鼠标在DOM内部移动时触发； <code class="highlighter-rouge">hover</code>：鼠标进入和退出时触发两个函数，相当于<code class="highlighter-rouge">mouseente</code>r加上<code class="highlighter-rouge">mouseleave</code>。</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">bind()</code> 方法为被选元素添加一个或多个事件处理程序,多个事件之间用空格隔开;
+a.bind(‘click mouseleave’);</p>
+  </li>
+  <li>
+    <p>off()可以取消绑定的事件，以下是错误操作，off不可以解除已绑定的事务处理函数;</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="c1">// 绑定事件:</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+  
+<span class="c1">// 解除绑定</span>
+<span class="nx">a</span><span class="p">.</span><span class="nx">off</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">first</code>当textarea或文本类型的input元素中的文本被选中时,会发生select()事件</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">trigger()</code>触发被选元素上指定的事件以及事件的默认行为;</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>var md=$("#modifys");
+//点击button触发md的select事件
+$('button').click(function(){
+    md.trigger('select');
+})
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>hide(5000)/show(500)在五秒内逐渐消失或出现，实现动画效果,是从左上角逐渐消失出现的,toggle则是根据当前状态进行左上角收缩或消失;</p>
+  </li>
+  <li>
+    <p>slideUp和slideDown是在垂直方向展开或收缩的,slideToggle则是根据状态.\</p>
+  </li>
+  <li>
+    <p>animate()自定义动画效果，传入的参数是DOM元素最终的CSS状态和时间,还可以再传入一个函数，动画结束时，该函数被调用</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">div</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#test-animate</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">div</span><span class="p">.</span><span class="nx">animate</span><span class="p">({</span>
+<span class="na">opacity</span><span class="p">:</span><span class="mf">0.3</span><span class="p">,</span><span class="c1">//透明度</span>
+<span class="na">width</span><span class="p">:</span><span class="dl">"</span><span class="s2">30%</span><span class="dl">""</span><span class="s2">,
+height:</span><span class="dl">"</span><span class="mi">200</span><span class="nx">px</span><span class="dl">"</span><span class="s2">
+},4000,function(){
+$(this).css(</span><span class="dl">"</span><span class="nx">width</span><span class="dl">"</span><span class="s2">,</span><span class="dl">"</span><span class="mi">20</span><span class="o">%</span><span class="dl">"</span><span class="s2">).css(</span><span class="dl">"</span><span class="nx">height</span><span class="dl">"</span><span class="s2">,</span><span class="dl">"</span><span class="mi">200</span><span class="nx">px</span><span class="dl">"</span><span class="s2">).css(</span><span class="dl">"</span><span class="nx">background</span><span class="dl">"</span><span class="s2">,</span><span class="dl">"</span><span class="nx">red</span><span class="dl">"</span><span class="s2">);
+})
+</span></pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>fadeIn和fadeOut实现淡入淡出效果,</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c1">//实现删除的淡出效果</span>
+<span class="nx">tr</span><span class="p">.</span><span class="nx">fadeOut</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span><span class="nx">tr</span><span class="p">.</span><span class="nx">remove</span><span class="p">();})</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>所有的动画效果是可以设置第二个参数回调函数，即实现了动画效果后调用。</p>
+  </li>
+  <li>
+    <p>$.fn.functionname=funcntion(){};jquery扩展,自定义一个新的属性</p>
+  </li>
+  <li>
+    <p>传入的参数要与css设置的参数名保持一致</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">highlight2</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">bgcolor</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">&amp;&amp;</span> <span class="nx">options</span><span class="p">.</span><span class="nx">backgroundColor</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">#fffceb</span><span class="dl">'</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">color</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">&amp;&amp;</span> <span class="nx">options</span><span class="p">.</span><span class="nx">color</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">#d85030</span><span class="dl">'</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">backgroundColor</span><span class="dl">'</span><span class="p">,</span> <span class="nx">bgcolor</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">'</span><span class="s1">color</span><span class="dl">'</span><span class="p">,</span> <span class="nx">color</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+  
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#test-highlight2 span</span><span class="dl">"</span><span class="p">).</span><span class="nx">highlight2</span><span class="p">({</span>
+    <span class="na">backgroundColor</span><span class="p">:</span><span class="dl">"</span><span class="s2">green</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">color</span><span class="p">:</span><span class="dl">"</span><span class="s2">pink</span><span class="dl">"</span>
+<span class="p">});</span>
+  
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>写一个扩展函数和一个扩展函数中的属性</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="c1">//相比之前的写法的优点：可以设置和修改默认颜色而不用去修改函数本身，也可以自己传递参数</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">newColor</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">){</span>
+    <span class="c1">//设置颜色顺序,后面的优先级最高</span>
+    <span class="c1">//$.extend的第一个值也可以写为{}, 等同于false，第一个值代表深度合并</span>
+    <span class="kd">var</span> <span class="nx">ops</span><span class="o">=</span><span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="kc">false</span><span class="p">,</span><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">newColor</span><span class="p">.</span><span class="k">default</span><span class="p">,</span><span class="nx">options</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">backgroundColor</span><span class="dl">"</span><span class="p">,</span><span class="nx">ops</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span><span class="nx">ops</span><span class="p">.</span><span class="nx">color</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">newColor</span><span class="p">.</span><span class="k">default</span><span class="o">=</span><span class="p">{</span>
+    <span class="na">backgroundColor</span><span class="p">:</span><span class="dl">"</span><span class="s2">pink</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">color</span><span class="p">:</span><span class="dl">"</span><span class="s2">purple</span><span class="dl">"</span>
+<span class="p">}</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">newColor</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="nx">backgroundColor</span><span class="o">=</span><span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">newColor</span><span class="p">.</span><span class="k">default</span><span class="p">.</span><span class="nx">color</span><span class="o">=</span><span class="dl">"</span><span class="s2">white</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#test-highlight2 span</span><span class="dl">"</span><span class="p">).</span><span class="nx">newColor</span><span class="p">();</span>
+  
+  
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li></li>
+  <li>
+    <h3 id="ajax">ajax</h3>
+
+    <ul>
+      <li>jQuery在全局对象<code class="highlighter-rouge">jQuery</code>（也就是<code class="highlighter-rouge">$</code>）绑定了<code class="highlighter-rouge">ajax()</code>函数，可以处理AJAX请求。<code class="highlighter-rouge">ajax(url, settings)</code>函数需要接收一个URL和一个可选的<code class="highlighter-rouge">settings</code>对象，常用的选项如下：
+        <ul>
+          <li>async：是否异步执行AJAX请求，默认为<code class="highlighter-rouge">true</code>，千万不要指定为<code class="highlighter-rouge">false</code>；</li>
+          <li>method：发送的Method，缺省为<code class="highlighter-rouge">'GET'</code>，可指定为<code class="highlighter-rouge">'POST'</code>、<code class="highlighter-rouge">'PUT'</code>等；</li>
+          <li>contentType：发送POST请求的格式，默认值为<code class="highlighter-rouge">'application/x-www-form-urlencoded; charset=UTF-8'</code>，也可以指定为<code class="highlighter-rouge">text/plain</code>、<code class="highlighter-rouge">application/json</code>；</li>
+          <li>data：发送的数据，可以是字符串、数组或object。如果是GET请求，data将被转换成query附加到URL上，如果是POST请求，根据contentType把data序列化成合适的格式；</li>
+          <li>headers：发送的额外的HTTP头，必须是一个object；</li>
+          <li>dataType：接收的数据格式，可以指定为<code class="highlighter-rouge">'html'</code>、<code class="highlighter-rouge">'xml'</code>、<code class="highlighter-rouge">'json'</code>、<code class="highlighter-rouge">'text'</code>等，缺省情况下根据响应的<code class="highlighter-rouge">Content-Type</code>猜测。</li>
+        </ul>
+      </li>
+      <li>done();请求成功时调用，done(function(data){}),data用来接收数据</li>
+      <li>fail();请求失败时调用，fail(xhr,status),xhr接收状态码，status接收状态</li>
+      <li>always(),不管成功失败都会调用</li>
+      <li><code class="highlighter-rouge">$.extend(target, obj1, obj2, ...)</code>，它把多个object对象的属性合并到第一个target对象中，遇到同名属性，总是使用靠后的对象的值，也就是越往后优先级越高：</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="httpajax">httpajax</h3>
+
+<ul>
+  <li>request.open(method,url,async);</li>
+  <li></li>
+</ul>
+:ET

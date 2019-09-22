@@ -1,0 +1,49 @@
+I"�<h1 id="html">HTML</h1>
+
+<ul>
+  <li>
+    <p>role是一个<a href="http://lib.csdn.net/base/html5">HTML5</a>的属性，role=”form”告诉辅助设备（如屏幕阅读器）这个元素所扮演的角色是个表单，在button中role=”button”就是</p>
+
+    <p>告诉设备，这是个按钮，可以点击。本质上是增强语义性，增强组件的可访问性、可用性和可交</p>
+  </li>
+  <li>
+    <p>transition:过渡效果</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre>语法:
+transition:	 property 	duration	 timing-function 	delay;
+transition-property 	规定设置过渡效果的 CSS 属性的名称。
+transition-duration 	规定完成过渡效果需要多少秒或毫秒。
+transition-timing-function 	规定速度效果的速度曲线。
+transition-delay 	定义过渡效果何时开始。
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="sass">SASS</h3>
+
+<ul>
+  <li>
+    <p>如果<code class="highlighter-rouge">$value</code>变量定义在了nav{}外边，在所有的这个样式表内都可以调用他，如果在nav{}规则块内，则代表只能在nav规则块内使用,意味着可以在css表的其他地方定义此值，而不会对这里造成影响;</p>
+  </li>
+  <li>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>$highlight-color: #F90;
+$highlight-border: 1px solid $highlight-color;
+.selected {
+  border: $highlight-border;
+}
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>在sass中，下划线_和-命名的内容是互通的：$link_color==$link-color</li>
+</ul>
+:ET

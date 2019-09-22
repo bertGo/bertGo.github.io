@@ -1,0 +1,74 @@
+I"�<h1 id="910">9/10</h1>
+
+<h3 id="-es6">-ES6</h3>
+
+<ul>
+  <li>注意，使用<code class="highlighter-rouge">super</code>的时候，必须显式指定是作为函数、还是作为对象使用，否则会报错。</li>
+  <li>第一种情况,super当作函数使用时，代表的是父类的构造函数,ES6要求，子类中的construceor必须调用一次super
+    <ul>
+      <li>注意，<code class="highlighter-rouge">super</code>虽然代表了父类<code class="highlighter-rouge">A</code>的构造函数，但是返回的是子类<code class="highlighter-rouge">B</code>的实例，即<code class="highlighter-rouge">super</code>内部的<code class="highlighter-rouge">this</code>指的是<code class="highlighter-rouge">B</code>的实例，因此<code class="highlighter-rouge">super()</code>在这里相当于<code class="highlighter-rouge">A.prototype.constructor.call(this)</code>。</li>
+      <li>第二种情况，super作为对象调用时，在普通方法中，super代表的是父类的原型对象，在静态方法中，super代表的是父类
+        <ul>
+          <li>由于是指向的父类原型对象，在父类实例上的方法和属性，是无法通过super调用的</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Mixin 指的是多个对象合成一个新的对象，新对象具有各个组成成员的接口。它的最简单实现如下。</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">a</span><span class="p">:</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span>
+<span class="p">};</span>
+<span class="kd">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">b</span><span class="p">:</span> <span class="dl">'</span><span class="s1">b</span><span class="dl">'</span>
+<span class="p">};</span>
+<span class="kd">const</span> <span class="nx">c</span> <span class="o">=</span> <span class="p">{...</span><span class="nx">a</span><span class="p">,</span> <span class="p">...</span><span class="nx">b</span><span class="p">};</span> <span class="c1">// {a: 'a', b: 'b'}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>由于<code class="highlighter-rouge">import</code>是静态执行，所以不能使用表达式和变量，这些只有在运行时才能得到结果的语法结构。</p>
+  </li>
+  <li>
+    <p>script标签异步加载:defer,async</p>
+
+    <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"path/to/myModule.js"</span> <span class="na">defer</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"path/to/myModule.js"</span> <span class="na">async</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <ul>
+      <li><code class="highlighter-rouge">defer</code>与<code class="highlighter-rouge">async</code>的区别是：<code class="highlighter-rouge">defer</code>要等到整个页面在内存中正常渲染结束（DOM 结构完全生成，以及其他脚本执行完成），才会执行；<code class="highlighter-rouge">async</code>一旦下载完，渲染引擎就会中断渲染，执行这个脚本以后，再继续渲染。一句话，<code class="highlighter-rouge">defer</code>是“渲染完再执行”，<code class="highlighter-rouge">async</code>是“下载完就执行”。另外，如果有多个<code class="highlighter-rouge">defer</code>脚本，会按照它们在页面出现的顺序加载，而多个<code class="highlighter-rouge">async</code>脚本是不能保证加载顺序的。</li>
+    </ul>
+  </li>
+  <li>浏览器对于带有<code class="highlighter-rouge">type="module"</code>的<code class="highlighter-rouge">&lt;script&gt;</code>，都是异步加载，不会造成堵塞浏览器，即等到整个页面渲染完，再执行模块脚本，等同于打开了<code class="highlighter-rouge">&lt;script&gt;</code>标签的<code class="highlighter-rouge">defer</code>属性。</li>
+</ul>
+
+<h3 id="慕课网">–慕课网</h3>
+
+<ul>
+  <li>可以通过浮动加版心实现慕课网的局部响应效果*</li>
+</ul>
+
+<h3 id="分享">–分享</h3>
+
+<h5 id="张涛老师python-爬虫">–张涛老师Python 爬虫</h5>
+
+<ul>
+  <li>基于市场的数据统计分析
+    <ul>
+      <li>只要语言可以模拟数据请求，就可以做爬虫 –curl</li>
+      <li>python 的优势是有丰富的库，做起来方便</li>
+    </ul>
+  </li>
+  <li></li>
+</ul>
+:ET

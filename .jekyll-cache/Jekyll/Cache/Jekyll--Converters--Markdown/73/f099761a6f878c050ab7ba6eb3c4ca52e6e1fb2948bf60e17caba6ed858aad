@@ -1,0 +1,165 @@
+I"�%<h1 id="98">9/8</h1>
+
+<h3 id="-react">– React</h3>
+
+<ul>
+  <li>
+    <p>对象的属性可以简写，对象也同样可以:</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">o</span><span class="o">=</span><span class="p">{</span>
+	<span class="nx">method</span><span class="p">(){</span>
+	<span class="k">return</span> <span class="dl">"</span><span class="s2">Hello</span><span class="dl">"</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+<span class="o">--------------</span><span class="err">等同于</span>
+<span class="kd">const</span> <span class="nx">o</span><span class="o">=</span><span class="p">{</span>
+	<span class="na">method</span><span class="p">:()</span><span class="o">=&gt;</span><span class="p">{</span>
+		<span class="k">return</span> <span class="dl">"</span><span class="s2">Hello</span><span class="dl">"</span>
+		<span class="p">}</span>
+<span class="p">}</span>
+<span class="o">-----------------------</span>
+ <span class="kd">let</span> <span class="nx">birth</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">2000/01/01</span><span class="dl">'</span><span class="p">;</span>
+  
+<span class="kd">const</span> <span class="nx">Person</span><span class="o">=</span><span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span><span class="dl">"</span><span class="s2">张三</span><span class="dl">"</span><span class="p">,</span>
+      <span class="c1">//等同于birth: birth</span>
+    <span class="nx">birth</span><span class="p">,</span>
+    <span class="c1">//等同于Hello:function(){...}</span>
+    <span class="nx">Hello</span><span class="p">(){</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">我的名字是</span><span class="dl">"</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)};</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>定义对象的数姓名和方法名都可以用表达式</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">for...in</code>循环：只遍历对象自身的和继承的可枚举的属性。</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Object.keys()</code>：返回对象自身的所有可枚举的属性的键名。</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">JSON.stringify()</code>：只串行化对象自身的可枚举的属性。</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Object.assign()</code>： 忽略<code class="highlighter-rouge">enumerable</code>为<code class="highlighter-rouge">false</code>的属性，只拷贝对象自身的可枚举的属性。</p>
+  </li>
+  <li>
+    <p>该<code class="highlighter-rouge">**Object.getPrototypeOf()**</code>方法返回<code class="highlighter-rouge">[[Prototype]]</code>指定对象的原型（即内部属性的值）。</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">prototype1</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="kd">const</span> <span class="nx">object1</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">prototype1</span><span class="p">);</span>
+  
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span><span class="nx">object1</span><span class="p">)</span> <span class="o">===</span> <span class="nx">prototype1</span><span class="p">);</span>
+<span class="c1">// expected output: true</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Object.setPrototypeOf(obj,prototype)</code> 方法设置一个指定的对象的原型 ( 即, 内部[[Prototype]]属性）到另一个对象或  <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/null"><code class="highlighter-rouge">null</code></a>。</p>
+
+    <ul>
+      <li>obj:要设置原型的对象;prototype:该对象的新原型</li>
+    </ul>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>  
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Object.create()</strong>方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__。</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">isHuman</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">printIntroduction</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`My name is </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="s2">. Am I human? </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">isHuman</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+  
+<span class="kd">const</span> <span class="nx">me</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">person</span><span class="p">);</span>
+  
+<span class="nx">me</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Matthew</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// "name" is a property set on "me", but not on "person"</span>
+<span class="nx">me</span><span class="p">.</span><span class="nx">isHuman</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// inherited properties can be overwritten</span>
+  
+<span class="nx">me</span><span class="p">.</span><span class="nx">printIntroduction</span><span class="p">();</span>
+<span class="c1">// expected output: "My name is Matthew. Am I human? true"</span>
+  
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>解构赋值可以读取对象继承的属性</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">o</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span> <span class="na">x</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">2</span> <span class="p">});</span>
+<span class="nx">o</span><span class="p">.</span><span class="nx">z</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+  
+<span class="kd">let</span> <span class="p">{</span> <span class="nx">x</span><span class="p">,</span> <span class="p">...</span><span class="nx">newObj</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">o</span><span class="p">;</span>
+<span class="kd">let</span> <span class="p">{</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">z</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">newObj</span><span class="p">;</span>
+<span class="nx">x</span> <span class="c1">// 1</span>
+<span class="nx">y</span> <span class="c1">// undefined</span>
+<span class="nx">z</span> <span class="c1">// 3</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>克隆对象的属性以及原型对象:</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>    <span class="c1">// const clone2=Object.assign(</span>
+    <span class="c1">//     Object.create(Object.getPrototypeOf(obj)),</span>
+    <span class="c1">//     obj</span>
+    <span class="c1">// );</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+:ET

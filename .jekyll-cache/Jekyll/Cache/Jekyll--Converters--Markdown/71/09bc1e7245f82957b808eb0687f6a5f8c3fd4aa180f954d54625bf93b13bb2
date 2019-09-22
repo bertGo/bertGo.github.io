@@ -1,0 +1,115 @@
+I"�<h1 id="729">7/29</h1>
+
+<h3 id="nodejs">nodejs</h3>
+
+<ul>
+  <li>request.on事件是指request被激活后就触发</li>
+  <li>
+    <p>request.on(‘data’,function( data ){});data事件是指有数据传输过来时，触发，end事件是指传输结束后触发</p>
+  </li>
+  <li>request.end指结束传送</li>
+  <li>
+    <p>socket</p>
+  </li>
+  <li>
+    <p>process.argv ,argv[]中的234相当于一个存储scanf的值</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre>例如，假设 process-args.js 的脚本如下：
+  
+// 打印 process.argv。
+process.argv.forEach((val, index) =&gt; {
+  console.log(`${index}: ${val}`);
+});
+  
+启动 Node.js 进程：
+  
+$ node process-args.js one two=three four
+  
+输出如下：
+0: /usr/local/bin/node
+1: /Users/mjr/work/node/process-args.js
+2: one
+3: two=three
+4: four
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="err">设置输入的编码</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">.</span><span class="nx">setEncoding</span><span class="p">(</span><span class="dl">'</span><span class="s1">utf8</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">//绑定事件，如果有键盘输入</span>
+<span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">readable</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">chunk</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">.</span><span class="nx">read</span><span class="p">();</span>
+    <span class="c1">//读取变量，不为空的话 ；有修改：  process.stdout.write(`数据: ${chunk}`);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">chunk</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">server</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">`数据: </span><span class="p">${</span><span class="nx">chunk</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+  
+<span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="dl">'</span><span class="s1">结束</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">});</span>
+  
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">process.stdin</code> 属性返回连接到 <code class="highlighter-rouge">stdin</code> (fd <code class="highlighter-rouge">0</code>) 的流。
+它是一个 <a href="http://nodejs.cn/s/wsJ1o1"><code class="highlighter-rouge">net.Socket</code></a> 流（也就是<a href="http://nodejs.cn/s/eYoo7B">双工流</a>）;</p>
+  </li>
+  <li>
+    <p>array.push ():方法可向数组的末尾添加一个或多个元素，并返回新的长度。</p>
+  </li>
+  <li>
+    <p>indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。</p>
+  </li>
+  <li>
+    <p>splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目。</p>
+
+    <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="nx">arrayObject</span><span class="o">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span><span class="nx">howmany</span><span class="p">,</span><span class="nx">item1</span><span class="p">,</span><span class="o">.....</span><span class="p">,</span><span class="nx">itemX</span><span class="p">)</span>
+  
+<span class="nx">参数</span> 	<span class="nx">描述</span>
+<span class="nx">index</span> 	<span class="nx">必需</span><span class="err">。</span><span class="nx">整数</span><span class="err">，</span><span class="nx">规定添加</span><span class="o">/</span><span class="nx">删除项目的位置</span><span class="err">，</span><span class="nx">使用负数可从数组结尾处规定位置</span><span class="err">。</span>
+<span class="nx">howmany</span> 	<span class="nx">必需</span><span class="err">。</span><span class="nx">要删除的项目数量</span><span class="err">。</span><span class="nx">如果设置为</span> <span class="mi">0</span><span class="err">，</span><span class="nx">则不会删除项目</span><span class="err">。</span>
+<span class="nx">item1</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="nx">itemX</span> 	<span class="nx">可选</span><span class="err">。</span><span class="nx">向数组添加的新项目</span><span class="err">。</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>server.listen(8088,’127.0.0.1’);启动一个服务器 ，监听 已经绑定到端口，unix域或window命名的管道连接的句柄上</li>
+</ul>
+:ET

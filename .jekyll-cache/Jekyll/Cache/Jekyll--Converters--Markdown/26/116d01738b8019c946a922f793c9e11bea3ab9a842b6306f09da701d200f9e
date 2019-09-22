@@ -1,0 +1,59 @@
+I"8<h1 id="93">9/3</h1>
+
+<h3 id="es6">–ES6</h3>
+
+<ul>
+  <li>是所有的功能都需要从一个文件导
+出。其中一些功能应该只在定义它的文件中使用。一个文件导出的功能是这个文件公共
+API。只有导出的功能才能被其他地方重用。这遵循了封装的最佳实践。</li>
+  <li>导出export时可以省略花括号</li>
+</ul>
+
+<h3 id="react">–React</h3>
+
+<ul>
+  <li>
+    <p>在继承高阶组件时，首字母必须大写，否则功能不全</p>
+
+    <p>高阶组件写法示例：</p>
+
+    <div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">WidthLoading</span><span class="o">=</span><span class="p">(</span><span class="nx">Compent</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">({</span><span class="nx">isLoading</span><span class="p">,...</span><span class="nx">rest</span><span class="p">})</span><span class="o">=&gt;</span>
+<span class="nx">isLoading</span> <span class="p">?</span>
+      <span class="p">&lt;</span><span class="nc">Loading</span><span class="p">/&gt;</span>
+      <span class="c1">//将其他的属性解构，若非isLoading有鉴别作用，可以只写一个...rest</span>
+      <span class="p">:&lt;</span><span class="nc">Compent</span> <span class="err">{</span><span class="p">...</span><span class="nt">rest</span><span class="err">}</span><span class="p">/&gt;</span>
+<span class="c1">//这里必须大写，否则render渲染功能会丢失,后面的Button是一个写好的组件</span>
+<span class="kd">const</span> <span class="nx">ButtonWidthLoading</span><span class="o">=</span><span class="nx">WidthLoading</span><span class="p">(</span><span class="nx">Button</span><span class="p">)</span>
+<span class="cm">/*---------------------------在return()中使用--------------------------------------*/</span>
+<span class="k">return</span><span class="p">(</span>
+	<span class="p">&lt;</span><span class="nc">ButtonWidthLoading</span>
+        <span class="c1">//第一个isLoading是上面规定的，可以改为其他，比如bert</span>
+        <span class="na">isLoading=</span><span class="si">{</span><span class="nx">isLoading</span><span class="si">}</span>
+        <span class="na">onClick=</span><span class="si">{</span><span class="p">()</span><span class="o">=&gt;</span><span class="k">this</span><span class="p">.</span><span class="nx">fetchSearchTopStories</span><span class="p">(</span><span class="nx">searchTerm</span><span class="p">,</span><span class="nx">page</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span>
+        <span class="p">&gt;</span>
+    More
+    <span class="p">&lt;/</span><span class="nc">ButtonWidthLoading</span><span class="p">&gt;</span>
+<span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li></li>
+</ul>
+
+:ET

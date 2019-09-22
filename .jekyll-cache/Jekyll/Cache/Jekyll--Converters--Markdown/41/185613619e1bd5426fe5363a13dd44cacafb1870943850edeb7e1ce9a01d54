@@ -1,0 +1,104 @@
+I"�<h1 id="815-分享">8/15 分享</h1>
+
+<h3 id="-node-hash加密模块的两个基础概念">— node hash加密模块的两个基础概念</h3>
+
+<h3 id="以及使用过程中极大概率会遇到的坑">以及使用过程中极大概率会遇到的坑</h3>
+
+<ul>
+  <li>
+    <p>概念一</p>
+
+    <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="c1">//获取crypto加密模块</span>
+<span class="k">var</span> <span class="nx">crypto</span><span class="o">=</span><span class="k">require</span><span class="p">(</span><span class="s1">'crypto'</span><span class="p">);</span>
+<span class="c1">//  构建hash，php是密钥</span>
+<span class="k">const</span> <span class="no">Hmac</span><span class="o">=</span><span class="nx">crypto</span><span class="o">.</span><span class="nx">createHmac</span><span class="p">(</span><span class="s1">'sha1'</span><span class="p">,</span><span class="s1">'php'</span><span class="p">);</span>
+<span class="c1">//Hmac.update(  )  //用来加密</span>
+  
+<span class="c1">//Hmac.digest(  ) 	//对加密的内容按照指定格式输出</span>
+<span class="nx">上述两种方法</span><span class="err">，</span><span class="nx">哪种是用来对内容进行加密</span><span class="err">？</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>概念二</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="c1">//获取crypto加密模块</span>
+<span class="kd">var</span> <span class="nx">crypto</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">crypto</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">//  构建hash，php是密钥</span>
+<span class="kd">const</span> <span class="nx">Hmac</span><span class="o">=</span><span class="nx">crypto</span><span class="p">.</span><span class="nx">createHmac</span><span class="p">(</span><span class="dl">'</span><span class="s1">sha1</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">php</span><span class="dl">'</span><span class="p">);</span>
+  
+<span class="nx">Hmac</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">Hmac</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">world</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">//我现在要加密的内容是helloworld，还是后面覆盖的world ,亦或者是一开始的hello ?</span>
+  
+<span class="c1">//结论：</span>
+<span class="nx">Hmac</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">Hmac</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">world</span><span class="dl">'</span><span class="p">);</span>
+  <span class="o">---------------------</span><span class="err">等于</span><span class="o">---------------</span>
+<span class="nx">Hmac</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="o">+</span><span class="dl">'</span><span class="s1">world</span><span class="dl">'</span><span class="p">);</span><span class="c1">//Hmac.update('helloworld');</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>填坑 :</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="c1">//获取crypto加密模块</span>
+<span class="kd">var</span> <span class="nx">crypto</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">crypto</span><span class="dl">'</span><span class="p">);</span>
+<span class="c1">//  构建hash，php是密钥</span>
+<span class="kd">const</span> <span class="nx">Hmac</span><span class="o">=</span><span class="nx">crypto</span><span class="p">.</span><span class="nx">createHmac</span><span class="p">(</span><span class="dl">'</span><span class="s1">sha1</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">php</span><span class="dl">'</span><span class="p">);</span>
+  
+<span class="kd">const</span> <span class="nx">Hmac_text</span><span class="o">=</span><span class="nx">Hmac</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">xdl</span><span class="dl">'</span><span class="p">).</span><span class="nx">digest</span><span class="p">(</span><span class="dl">'</span><span class="s1">hex</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Hmac_text</span><span class="p">);</span>
+<span class="c1">//再次加密</span>
+<span class="kd">const</span> <span class="nx">Hmac_text_two</span><span class="o">=</span><span class="nx">Hmac</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="dl">'</span><span class="s1">xdl2019</span><span class="dl">'</span><span class="p">).</span><span class="nx">digest</span><span class="p">(</span><span class="dl">'</span><span class="s1">hex</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Hmac_text_two</span><span class="p">);</span>
+  
+<span class="c1">//结论:</span>
+<span class="c1">//每次加密之前都需要重新构建hash </span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <h3 id="总结">总结:</h3>
+
+    <p>1:在digest()输出加密前,可以多次调用update()叠加加密内容</p>
+
+    <p>2:每次加密之前需要重新构建hash方法;</p>
+
+    <p>以上两点总结适用于node中的所有哈希算法加密:’md5,sha1,sha256,hmac’</p>
+  </li>
+</ul>
+
+:ET

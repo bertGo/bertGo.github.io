@@ -1,0 +1,69 @@
+I"
+<h1 id="722">7/22</h1>
+
+<h3 id="linux">Linux</h3>
+
+<ul>
+  <li>find /etc -mtime 0 # 在根目录下的etc目录下查找今天之内有改动的文件</li>
+</ul>
+
+<h3 id="vim">Vim</h3>
+
+<ul>
+  <li>
+    <p>J 删除换行符，合并下一行</p>
+  </li>
+  <li>
+    <p>G 跳转到文末</p>
+  </li>
+  <li>
+    <p>gg 跳转到开头</p>
+  </li>
+  <li>
+    <p>ZZ 退出vim</p>
+  </li>
+  <li>
+    <p>nyy 复制n行</p>
+  </li>
+  <li>
+    <p>p 粘贴</p>
+  </li>
+  <li>
+    <p>折叠：
+1  :set fdm=marker  在vim中执行该命令
+2  5G  将光标跳转到第5行
+3  zf10G  折叠第5行到第10行的代码，vim会在折叠的开始和结束自动添加三个连续的花括号作为标记
+4  zR  打开所有折叠
+5  zM  关闭所有折叠</p>
+
+    <p>6  zE  删除所有的折叠标签</p>
+  </li>
+</ul>
+
+<h3 id="javascript">JavaScript</h3>
+
+<ul>
+  <li>Math.round(num) ：把十进制数值舍入位一个与之最接近的整数</li>
+  <li>在创建Date对象的新实例时，JavaScript解释器将自动地使用当前日期和时间对它进行初始化;
+    <ul>
+      <li>Date 内有一个getDay方法 ，获取当前是星期几</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">.indexOf()</code>:方法可返回某个指定的字符串值在字符串中首次出现的位置;如果要检索的字符串值没有出现，则该方法返回 -1。</li>
+  <li><code class="highlighter-rouge">typeof </code>可以告诉我们它的操作对象是一个字符串，数值，函数，对象还是布尔值</li>
+  <li><code class="highlighter-rouge">document.getElementById("picture").getElementsByClassName("a").length </code>:重复调用document内的方法时，不用重新加document,直接在前一句后面引用就可以</li>
+  <li><code class="highlighter-rouge">document.getElementsByTagName('标签元素')</code>:显示html中对应的标签元素（li，ul）</li>
+  <li><code class="highlighter-rouge">getElementsByClassName('类名')</code>,表示这个类名下的所有元素</li>
+  <li>
+    <p><code class="highlighter-rouge">document.getElementById('元素的id')</code>：给一个id，返回这个id对应的元素是什么元素，比如   object HTMLULelement;</p>
+  </li>
+  <li>节点——-&gt;页面中所有的内容（标签、属性、文本（文字、换行、空格、回车）），Node
+    <ul>
+      <li>属性节点：页面元素中的属性，比如宽度width</li>
+      <li>文本节点：页面元素中的文字..</li>
+      <li>元素节点：element，比如ul，li，p，form</li>
+    </ul>
+  </li>
+  <li></li>
+</ul>
+:ET

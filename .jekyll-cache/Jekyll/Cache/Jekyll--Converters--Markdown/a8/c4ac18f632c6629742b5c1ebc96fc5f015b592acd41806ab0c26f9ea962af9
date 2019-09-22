@@ -1,0 +1,72 @@
+I"�
+<h3 id="javascript">JavaScript</h3>
+
+<ul>
+  <li>
+    <p>.getAttribute 方法不属于document对象，只能通过元素节点对象调用。列如：与getElementsByTagName方法合用，获取每个&lt;p&gt;元素的title属性:</p>
+
+    <ul>
+      <li>
+        <p>var paras=document.getElementsByTagName(“p”);
+for(var i=0;i&lt;paras.length;i++){</p>
+
+        <p>alert(paras[i].getAttribute(“title”));
+}</p>
+      </li>
+      <li>
+        <p>src,title,属于元素的属性，&lt;p&gt; <img /> &lt;ul&gt;属于元素</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>.setAttribute 用来设置属性的值，比如将某元素中的src属性修改</p>
+  </li>
+  <li>
+    <p>.childNodes  可以获取指定元素的所有子元素，它是一个包含这个元素全部子元素的数组;由于一个HTML中只有一个body标签，所以键值0对应的值就是所有子元素</p>
+  </li>
+  <li>
+    <p>onload是事件处理函数，window.onload =showBody;表示页面加载时调用showBody函数</p>
+  </li>
+  <li>
+    <p>nodeType属性:</p>
+
+    <ul>
+      <li>元素节点的nodeType的 属性值是1</li>
+      <li>属性 节点的nodeType的属性值是2</li>
+      <li>文本节点的nodeType的属性值是3</li>
+    </ul>
+  </li>
+  <li>
+    <p>&lt; p&gt;value&lt; /p&gt; p元素内的文本是p元素的第一个子节点，也就是数组中的第0个键</p>
+  </li>
+  <li>
+    <p>firstChild：只要访问childNodes数组中的第一个元素，都可以把它写成firstChild;</p>
+
+    <ul>
+      <li>与之对应的是lastChild</li>
+    </ul>
+  </li>
+  <li>
+    <p>分离JavaScript: 在HTML文档里使用诸如ONCLICK之类的属性时一种既没有效率又容易引发问题的做法</p>
+  </li>
+  <li>
+    <p>var myVar=setInterval(function(){time()},4000); 这是定时器内调用函数的正确方法;</p>
+  </li>
+  <li>
+    <p>轮播图自动播放：</p>
+
+    <ul>
+      <li>方法1：将图片名称设置为12345自然数字，写一个函数，函数内设置元素属性中的src，拼接上地址就可以，随后设置i++,并且当i超过一定数值后重新赋值,最后用定时器调用这个函数，每次换过图片后，a都会+1,下次再进来就是更换的新的src地址；</li>
+      <li>方法2：或者设置一个index索引值，每当点击事件出发后，定义一个函数调用对应的元素，将其对应的href转换成src标签</li>
+    </ul>
+  </li>
+  <li>在一个页面内的索引值取同一个变量才可以保持轮播图同步;</li>
+  <li>js.split(str,spl) 将一个字符串按照指定的参数切割成数组</li>
+</ul>
+
+<h3 id="代码压缩工具">代码压缩工具</h3>
+
+<ul>
+  <li>可以精简服务器性能</li>
+</ul>
+:ET

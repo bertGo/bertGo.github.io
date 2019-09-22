@@ -1,0 +1,37 @@
+I"�<h1 id="918">9/18</h1>
+
+<ul>
+  <li>
+    <p>css动画效果 animation规定了要应用的动画效果，规定了属性以及时长</p>
+  </li>
+  <li>
+    <p>@keyframs创建动画，绑定到一个选择器</p>
+
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="nt">div</span>
+<span class="p">{</span>
+    <span class="nl">animation</span><span class="p">:</span> <span class="n">myfirst</span> <span class="m">5s</span><span class="p">;</span>
+    <span class="nl">-webkit-animation</span><span class="p">:</span> <span class="n">myfirst</span> <span class="m">5s</span><span class="p">;</span> <span class="c">/* Safari 与 Chrome */</span>
+<span class="p">}</span>
+<span class="k">@keyframes</span> <span class="n">myfirst</span>
+<span class="p">{</span>
+    <span class="nt">from</span> <span class="p">{</span><span class="nl">background</span><span class="p">:</span> <span class="no">red</span><span class="p">;}</span>
+    <span class="nt">to</span> <span class="p">{</span><span class="nl">background</span><span class="p">:</span> <span class="no">yellow</span><span class="p">;}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>jquery.hover()里面可以继续写其他的事件，比如fadeInout</p>
+  </li>
+</ul>
+
+:ET

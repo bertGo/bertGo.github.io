@@ -1,0 +1,129 @@
+I"�<h1 id="88">8/8</h1>
+
+<h2 id="js">JS</h2>
+
+<ul>
+  <li>attribute的value值只在初始化的时候跟property一样，使用getAttribute获取的值是初始化时候的值，如果没有设置则是 ““，除非使用setAttribute方法手动去改变，但是这个改变也不会影响property的值；
+property的value值是input实时输入的值，该值的改变同样也不影响attribute。</li>
+</ul>
+
+<hr />
+
+<h2 id="jquery">JQuery</h2>
+
+<ul>
+  <li>
+    <p>confirm() 方法用于显示一个带有指定消息和 OK 及取消按钮的对话框。在用户点击确认按钮或取消按钮把对话框关闭之前，他将阻止用户对浏览器的所有输入，将暂停对js代码的执行，在用户做出响应之前，不会执行下一条语句</p>
+  </li>
+  <li>
+    <p>window.open() 方法用于打开一个新的浏览器窗口或查找一个已命名的窗口。</p>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>”</td>
+          <td> </td>
+          <td>“和”&amp;&amp;”都遵循“短路”原理，当options不存在时,”&amp;&amp;”会短路掉options.backgroundColor，就不会出现undefined.backgroundColor这种错误情况。</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>创建一个 <input /> 元素必须同时设定 type 属性。因为微软规定 <input /> 元素的 type 只能写一次。</p>
+
+    <p>jQuery 代码:</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>// 在 IE 中无效:
+$("&lt;input&gt;").attr("type", "checkbox");
+// 在 IE 中有效:
+$("&lt;input type='checkbox'&gt;");
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>用appendTo在body中动态添加一个标签，并赋事件和属性</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;input&gt;</span><span class="dl">"</span><span class="p">,{</span>
+    <span class="na">type</span><span class="p">:</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">focusin</span><span class="p">:</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">background-color</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">#ffccee</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">focusout</span><span class="p">:</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">color</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">pink</span><span class="dl">"</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="dl">"</span><span class="s2">backgroundColor</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">white</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}).</span><span class="nx">appendTo</span><span class="p">(</span><span class="dl">"</span><span class="s2">body</span><span class="dl">"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>.reverse();将数组反转</p>
+  </li>
+  <li>
+    <p>:gt(),返回所有大于给定索引值的元素$(“li:gt(2)”)</p>
+  </li>
+  <li>
+    <p>在html5中读取预存的data-[key]值</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="c1">//data-[key]=[value]    </span>
+<span class="o">&lt;</span><span class="nx">div</span> <span class="nx">data</span><span class="o">-</span><span class="nx">test</span><span class="o">=</span><span class="dl">"</span><span class="s2">this is test</span><span class="dl">"</span><span class="o">&gt;</span>  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="dl">"</span><span class="s2">test</span><span class="dl">"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>data()给元素添加数据，也可以添加对象类型的数据</p>
+
+    <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre> <span class="err">$</span><span class="p">(</span><span class="s2">"div"</span><span class="p">)</span><span class="o">.</span><span class="nx">data</span><span class="p">(</span><span class="s2">"test"</span><span class="p">,{</span>
+     <span class="nx">first</span><span class="o">:</span><span class="mi">22</span><span class="p">,</span>
+<span class="nx">last</span><span class="o">:</span><span class="s2">"pizza!"</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>removeData:从数组之中删除之前添加的数据</p>
+  </li>
+  <li>
+    <p>queue(),显示或操作在匹配元素上执行的函数队列；</p>
+  </li>
+  <li>
+    <p>停止动画的细节,queue中的替换数组很重要，需要将当前队列的值替换掉</p>
+
+    <pre><code class="language-JS">    $("#stop").click(function (){
+        $("div").queue("fx",[]);// [ ]很重要,否则动画会消失
+        $("div").stop();
+    })
+</code></pre>
+  </li>
+  <li>
+    <p>jQuery.dequeue():终止一个自定义队列</p>
+  </li>
+  <li>
+    <p>jQuery.clearQueue();清空队列上上为执行的所有队列，如果不带参数，默认清空的是动画队列，和stop()相似，但区别是clearQueue()会清空所有通过queue创建的队列</p>
+  </li>
+  <li>
+    <p>($(“ul :not(:animated)”) 匹配所有没有在执行动画效果的元素</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">($("div[id]")</code> 匹配所有含有ID属性的DIV</p>
+  </li>
+  <li>默认情况下，请求总会被发出去，但浏览器有可能从他的缓存中调取数据。要禁止使用缓存的结果，可以设置cache参数为false。如果希望判断数据自从上次请求后没有更改过就报告出错的话，可以设置ifModified为true。</li>
+</ul>
+:ET

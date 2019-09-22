@@ -1,0 +1,26 @@
+I"<h1 id="821">8.21</h1>
+
+<h3 id="html">html</h3>
+
+<ul>
+  <li>
+    <p>word-break ：规定自动换行的处理方法，默认是使用浏览器规则，可以选择使用：</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>break-all 允许在单词内进行换行
+keep-all 只能在半角空格或连字符处换行。
+默认是normall
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>显示当前滚动条位置document.documentElement.scrollTop</p>
+  </li>
+  <li>
+    <p>window.scrollTo(x:,y:);返回或者操纵指定x轴位置和y轴位置</p>
+  </li>
+  <li></li>
+</ul>
+
+:ET

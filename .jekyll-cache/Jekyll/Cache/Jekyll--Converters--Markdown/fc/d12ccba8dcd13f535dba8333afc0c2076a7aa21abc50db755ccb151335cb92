@@ -1,0 +1,82 @@
+I"*<h1 id="921">9/21</h1>
+
+<h3 id="jekyll">jekyll</h3>
+
+<ul>
+  <li>
+    <p>jekyll的配置文件是在_config.yml</p>
+  </li>
+  <li>
+    <p>最后，如果你在 <code class="highlighter-rouge">_config.yml</code> 的 <code class="highlighter-rouge">defaults</code> 部分设置了站点的默认值，你可以在页面或文章的文件里覆盖这些设定。你需要做的是在在页面或文章的头信息里指定要覆盖的设定。例如：</p>
+
+    <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre><span class="c1"># In _config.yml</span>
+<span class="nn">...</span>
+<span class="na">defaults</span><span class="pi">:</span>
+  <span class="pi">-</span>
+    <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">projects"</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">pages"</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">layout</span><span class="pi">:</span> <span class="s2">"</span><span class="s">project"</span>
+      <span class="na">author</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Mr.</span><span class="nv"> </span><span class="s">Hyde"</span>
+      <span class="na">category</span><span class="pi">:</span> <span class="s2">"</span><span class="s">project"</span>
+<span class="nn">...</span>
+<span class="c1"># In projects/foo_project.md</span>
+<span class="nn">---</span>
+<span class="na">author</span><span class="pi">:</span> <span class="s2">"</span><span class="s">John</span><span class="nv"> </span><span class="s">Smith"</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s2">"</span><span class="s">foobar"</span>
+<span class="nn">---</span>
+<span class="s">The post text goes here...</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>在站点建立时，文章的布局(layout)会是foobar 而不是project</p>
+
+    <ul>
+      <li>预定义的全局变量</li>
+    </ul>
+
+    <table>
+      <thead>
+        <tr>
+          <th>变量名称</th>
+          <th>描述</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="highlighter-rouge">layout</code></td>
+          <td>如果设置的话，会指定使用该模板文件。指定模板文件时候不需要文件扩展名。模板文件必须放在 <code class="highlighter-rouge">_layouts</code> 目录下。</td>
+        </tr>
+        <tr>
+          <td><code class="highlighter-rouge">permalink</code></td>
+          <td>如果你需要让你发布的博客的 URL 地址不同于默认值 <code class="highlighter-rouge">/year/month/day/title.html</code>，那你就设置这个变量，然后变量值就会作为最终的 URL 地址。</td>
+        </tr>
+        <tr>
+          <td><code class="highlighter-rouge">published</code></td>
+          <td>如果你不想在站点生成后展示某篇特定的博文，那么就设置（该博文的）该变量为 false。</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li></li>
+</ul>
+
+:ET

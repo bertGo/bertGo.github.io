@@ -1,0 +1,287 @@
+I"P<h1 id="95">9/5</h1>
+
+<h3 id="es6">–ES6</h3>
+
+<ul>
+  <li>
+    <p>安装es-checker 检查运行环境对es6的支持情况</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-g</span> es-checker
+//运行，检查支持情况
+<span class="nv">$ </span>es-checker
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>ES6 明确规定，如果区块中存在<code class="highlighter-rouge">let</code>和<code class="highlighter-rouge">const</code>命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">tmp</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+  
+<span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">tmp</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">abc</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// ReferenceError</span>
+  <span class="kd">let</span> <span class="nx">tmp</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>以上会报错，以上代码声明了一个全局变量tmp ,又存在一个块级变量tmp,导致后者绑定了这块作用域，所以在let之前赋值会报错</p>
+  </li>
+  <li>
+    <p>暂时死区：</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">typeof</span>	<span class="nx">x</span><span class="p">;</span><span class="c1">//报错</span>
+<span class="kd">let</span>	<span class="nx">x</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>变量x使用let声明，所有在x声明之前，都属于x的死区</p>
+  </li>
+  <li>
+    <p>应该避免在块级作用域内声明函数。如果确实需要，也应该写成函数表达式，而不是函数声明语句。</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="c1">//函数声明语句</span>
+<span class="kd">let</span> <span class="nx">a</span><span class="o">=</span><span class="dl">"</span><span class="s2">no</span><span class="dl">"</span>
+<span class="kd">function</span> <span class="nx">f</span><span class="p">(){</span>
+	<span class="k">return</span> <span class="nx">a</span>
+<span class="p">}</span>
+<span class="c1">//函数表达式</span>
+<span class="kd">let</span> <span class="nx">a</span><span class="o">=</span><span class="dl">'</span><span class="s1">yes</span><span class="dl">'</span>
+<span class="kd">let</span> <span class="nx">f</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+	<span class="k">return</span> <span class="nx">a</span>
+<span class="p">}</span>
+<span class="c1">//箭头写法</span>
+<span class="kd">let</span> <span class="nx">f</span> <span class="o">=</span><span class="p">()</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>const 声明的变量，需要立即初始化
+<code class="highlighter-rouge">const</code>实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址所保存的数据不得改动,对于简单类型，const指向的就是变量保存的地址，对于复合型类型，比如数组对象，变量保存的实际上就是一个指向地址的指针。</p>
+  </li>
+  <li>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">let</span> <span class="p">[</span><span class="nx">foo</span> <span class="o">=</span> <span class="kc">true</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="nx">foo</span> <span class="c1">// true</span>
+  
+<span class="kd">let</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">];</span> <span class="c1">// x='a', y='b'</span>
+<span class="kd">let</span> <span class="p">[</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">];</span> <span class="c1">// x='a', y='b'</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>ES6内部使用严格相等运算符(===),判断一个数组是否有值，所以只有当一个数组成员严格等于undefind，默认值才会生效</p>
+  </li>
+  <li>
+    <p>数组解构取值是按次序的，对象解构取值是按属性名的;</p>
+  </li>
+  <li>
+    <p>解构赋值中，模式内不能放括号，非模式内可以放括号</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="p">[(</span><span class="nx">b</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">];</span> <span class="c1">// 正确</span>
+<span class="p">({</span> <span class="na">p</span><span class="p">:</span> <span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">}</span> <span class="o">=</span> <span class="p">{});</span> <span class="c1">// 正确</span>
+<span class="p">({</span> <span class="na">p</span><span class="p">:</span> <span class="nx">a</span> <span class="p">})</span> <span class="o">=</span> <span class="p">{</span> <span class="na">p</span><span class="p">:</span> <span class="mi">42</span> <span class="p">};</span><span class="c1">//上面代码将整个模式放在圆括号之中，导致报错</span>
+<span class="p">([</span><span class="nx">a</span><span class="p">])</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">];</span><span class="c1">//上面代码将整个模式放在圆括号之中，导致报错</span>
+<span class="p">[({</span> <span class="na">p</span><span class="p">:</span> <span class="nx">a</span> <span class="p">}),</span> <span class="p">{</span> <span class="na">x</span><span class="p">:</span> <span class="nx">c</span> <span class="p">}]</span> <span class="o">=</span> <span class="p">[{},</span> <span class="p">{}];</span><span class="c1">//将部分模式放在括号之中，导致报错</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>解构赋值的用途:
+交换变量的值</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="kd">let</span> <span class="nx">a</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">b</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+<span class="kd">let</span><span class="p">{</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">}</span><span class="o">=</span><span class="p">{</span><span class="nx">b</span><span class="p">,</span><span class="nx">a</span><span class="p">};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="o">+</span><span class="dl">"</span><span class="s2">+</span><span class="dl">"</span><span class="o">+</span><span class="nx">b</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>字符串遍器其接口</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nb">String</span><span class="p">.</span><span class="nx">fromCodePoint</span><span class="p">(</span><span class="mh">0x20BB7</span><span class="p">)</span><span class="c1">// 𠮷</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>javascript允许直接输入字符，以及输入字符的转义形式
+<code class="highlighter-rouge">"中"==="\u4e2d"//true</code></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/tc39/proposal-well-formed-stringify">ES2019</a> 改变了<code class="highlighter-rouge">JSON.stringify()</code>的行为。如果遇到<code class="highlighter-rouge">0xD800</code>到<code class="highlighter-rouge">0xDFFF</code>之间的单个码点，或者不存在的配对形式，它会返回转义字符串，留给应用自己决定下一步的处理。</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="dl">"</span><span class="se">\</span><span class="s2">uD800</span><span class="dl">"</span><span class="p">)</span><span class="o">===</span><span class="dl">"</span><span class="se">\\</span><span class="s2">ud800</span><span class="dl">"</span><span class="c1">//true</span>
+<span class="c1">//浏览器显示是\ud800,但其实真实值是\\ud800</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>charAt法可返回指定位置的字符。</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>stringObject.charAt(index)
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>字符串模板的作用：</p>
+
+    <ol>
+      <li>字符串拼接:</li>
+    </ol>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">apple</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">orange</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">banana</span><span class="dl">'</span><span class="p">]</span>
+<span class="kd">const</span> <span class="nx">quantities</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`I got </span><span class="p">${</span>
+    <span class="nx">fruits</span>
+        <span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">fruit</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="s2">`</span><span class="p">${</span><span class="nx">quantities</span><span class="p">[</span><span class="nx">index</span><span class="p">]}</span><span class="s2"> </span><span class="p">${</span><span class="nx">fruit</span><span class="p">}</span><span class="s2">s`</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">'</span><span class="s1">, </span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+<span class="c1">// I got 4 apples, 5 oranges, 6 bananas</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>通过它可以进行轻易的代码重构，让字符串拼接不再是乱七八糟的单引号和双引号
+简单的例子:</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="c1">//ES5</span>
+<span class="kd">const</span> <span class="nx">compiled</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello &lt;%= user %&gt;!</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">compiled</span><span class="p">({</span> <span class="na">user</span><span class="p">:</span> <span class="dl">'</span><span class="s1">fred</span><span class="dl">'</span> <span class="p">}))</span>
+<span class="c1">// hello fred!</span>
+<span class="c1">//ES6  </span>
+ <span class="kd">const</span> <span class="nx">hello</span><span class="o">=</span><span class="nx">data</span><span class="o">=&gt;</span><span class="s2">`hello </span><span class="p">${</span><span class="nx">data</span><span class="p">}</span><span class="s2">!`</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hello</span><span class="p">(</span><span class="dl">'</span><span class="s1">bert</span><span class="dl">'</span><span class="p">));</span>
+<span class="c1">//hello bert!</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <ol>
+      <li>防止XSS攻击</li>
+    </ol>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="rouge-code"><pre>   <span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span>
+   <span class="nx">SaferHTML</span><span class="s2">`&lt;p&gt;</span><span class="p">${</span><span class="nx">sender</span><span class="p">}</span><span class="s2"> has sent you a message.&lt;/p&gt;`</span><span class="p">;</span>
+   <span class="kd">function</span> <span class="nx">SaferHTML</span><span class="p">(</span><span class="nx">templateData</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kd">let</span> <span class="nx">s</span> <span class="o">=</span> <span class="nx">templateData</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+     <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+     <span class="kd">let</span> <span class="nx">arg</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">arguments</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+     
+     <span class="c1">// Escape special characters in the substitution.</span>
+       <span class="nx">s</span> <span class="o">+=</span> <span class="nx">arg</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&amp;/g</span><span class="p">,</span> <span class="dl">"</span><span class="s2">&amp;amp;</span><span class="dl">"</span><span class="p">)</span>
+             <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&lt;/g</span><span class="p">,</span> <span class="dl">"</span><span class="s2">&amp;lt;</span><span class="dl">"</span><span class="p">)</span>
+               <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&gt;/g</span><span class="p">,</span> <span class="dl">"</span><span class="s2">&amp;gt;</span><span class="dl">"</span><span class="p">);</span>
+   
+       <span class="c1">// Don't escape special characters in the template.</span>
+     <span class="nx">s</span> <span class="o">+=</span> <span class="nx">templateData</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+     <span class="p">}</span>
+     <span class="k">return</span> <span class="nx">s</span><span class="p">;</span>
+ <span class="p">}</span>
+       <span class="kd">let</span> <span class="nx">sender</span> <span class="o">=</span> <span class="s2">`&lt;script&gt;alert(" abc")&lt;/script&gt;`</span><span class="p">;</span> <span class="c1">// 恶意代码</span>
+     <span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="nx">SaferHTML</span><span class="s2">`&lt;p&gt;</span><span class="p">${</span><span class="nx">sender</span><span class="p">}</span><span class="s2">has sent you a message.&lt;/p&gt;`</span><span class="p">;</span>
+         
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span><span class="c1">//// &lt;p&gt;&amp;lt;script&amp;gt;alert("abc")&amp;lt;/script&amp;gt; has sent you a message.&lt;/p&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <ol>
+      <li>在模板字符串中所有的换行、tab、空格等字符都是字符串的一部分。</li>
+    </ol>
+
+    <h3 id="今日分享">今日分享</h3>
+
+    <h4 id="林华南">–林华南</h4>
+
+    <ul>
+      <li>
+        <p>什么是冒泡事件？</p>
+
+        <p>发生元素事件后，由子元素到父元素层层递进触发事件</p>
+
+        <ul>
+          <li>
+            <p>阻止冒泡事件</p>
+
+            <p>event.stopPropagation();</p>
+
+            <p>window.event.cancelBubble=true;</p>
+          </li>
+          <li>
+            <p>为什么要阻止冒泡事件？
+视频弹幕例子。</p>
+          </li>
+          <li>
+            <p>jq下，return false既可以阻止冒泡事件，也可以阻止默认行为;在原生下，只能阻止默认行为</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+:ET

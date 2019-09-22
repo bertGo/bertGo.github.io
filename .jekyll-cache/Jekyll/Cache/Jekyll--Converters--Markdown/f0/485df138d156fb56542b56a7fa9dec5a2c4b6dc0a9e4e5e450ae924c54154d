@@ -1,0 +1,59 @@
+I"�<h3 id="jquery">jQuery</h3>
+
+<ul>
+  <li>$.ajaxSetup() 方法为将来的 AJAX 请求设置默认值。</li>
+</ul>
+
+<hr />
+
+<ul>
+  <li>
+    <p>当发送Ajax请求前执行<code class="highlighter-rouge">ajaxStart()</code>方法绑定的函数，请求成功后，执行ajaxStop ()方法绑定的</p>
+
+    <p>函数。</p>
+  </li>
+  <li>
+    <p>$.grep():使用过滤函数过滤数组元素。</p>
+
+    <p>此函数至少传递两个参数：待过滤数组和过滤函数。过滤函数必须返回 true 以保留元素或 false 以删除元素。</p>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="c1">//返回大于1的元素</span>
+<span class="nx">jQuery</span><span class="p">.</span><span class="nx">grep</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">callback</span><span class="p">,</span> <span class="p">[</span><span class="nx">invert</span><span class="p">])</span>
+<span class="kd">var</span> <span class="nx">a</span><span class="o">=</span><span class="p">[];</span>
+<span class="nx">a</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">grep</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span><span class="nx">i</span><span class="p">){</span>
+    <span class="k">return</span> <span class="nx">n</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}))</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="node">node</h3>
+
+<ul>
+  <li>node 读取json数据</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>
+<span class="kd">var</span> <span class="nx">fs</span><span class="o">=</span><span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">file</span><span class="o">=</span><span class="dl">"</span><span class="s2">./text.json</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">result</span><span class="o">=</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span> <span class="nx">file</span><span class="p">));</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li></li>
+</ul>
+:ET

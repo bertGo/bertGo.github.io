@@ -1,0 +1,168 @@
+I"�0<h1 id="96">9/6</h1>
+
+<h3 id="react">–React</h3>
+
+<h3 id="es6">–ES6</h3>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">codePointAt()</code>方法是测试一个字符由两个字节还是由四个字节组成的最简单方法。</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">repeat()</code>返回一个新字符串，表示将原字符串重复n次</p>
+  </li>
+  <li>
+    <p>js中，单个字符是码点小于等于0xFFFF的Unicode字符。</p>
+  </li>
+  <li>
+    <p>ES6对正则表达式添加了u字符，用来正确处理Unicode码点大于\uFFFF的字符,含义为Unicode模式</p>
+  </li>
+  <li>
+    <p>可以用<code class="highlighter-rouge">.unicode</code> 来检测表达是是否添加了<code class="highlighter-rouge">u</code>修饰符,返回值为布尔</p>
+  </li>
+  <li>
+    <p>除了u字符，es6还为正则表达是添加了y字符(sticky粘连字符)：
+<code class="highlighter-rouge">y</code>修饰符的作用与<code class="highlighter-rouge">g</code>修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，<code class="highlighter-rouge">g</code>修饰符只要剩余位置中存在匹配就可，而<code class="highlighter-rouge">y</code>修饰符确保匹配必须从剩余的第一个位置开始，这也就是“粘连”的涵义。</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">aaa_aa_a</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">r1</span> <span class="o">=</span> <span class="sr">/a+/g</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">r2</span> <span class="o">=</span> <span class="sr">/a+/y</span><span class="p">;</span>
+  
+<span class="nx">r1</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="c1">// ["aaa"]</span>
+<span class="nx">r2</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="c1">// ["aaa"]</span>
+  
+<span class="nx">r1</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="c1">// ["aa"]</span>
+<span class="nx">r2</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="c1">// null</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>可以确保匹配之间没有漏掉的字符</p>
+  </li>
+  <li>
+    <p>y.sticky来检测表达式是否添加<code class="highlighter-rouge">y</code>修饰符，flags属性来返回正则表达式的修饰符</p>
+  </li>
+  <li>
+    <p>“先行断言”指的是，<code class="highlighter-rouge">x</code>只有在<code class="highlighter-rouge">y</code>前面才匹配，必须写成<code class="highlighter-rouge">/x(?=y)/</code>。比如，只匹配百分号之前的数字，要写成<code class="highlighter-rouge">/\d+(?=%)/</code>。”先行否定断言”指的是，<code class="highlighter-rouge">x</code>只有不在<code class="highlighter-rouge">y</code>前面才匹配，必须写成<code class="highlighter-rouge">/x(?!y)/</code>。比如，只匹配不在百分号之前的数字，要写成<code class="highlighter-rouge">/\d+(?!%)/</code>。</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="o">/</span><span class="err">\</span><span class="nx">d</span><span class="o">+</span><span class="p">(?</span><span class="o">=%</span><span class="p">)</span><span class="o">/</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="dl">'</span><span class="s1">100% of US presidents have been male</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// ["100"]</span>
+<span class="o">/</span><span class="err">\</span><span class="nx">d</span><span class="o">+</span><span class="p">(?</span><span class="o">!%</span><span class="p">)</span><span class="o">/</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="dl">'</span><span class="s1">that’s all 44 of them</span><span class="dl">'</span><span class="p">)</span>                 <span class="c1">// ["44"]</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">exec() </code>方法用于检索字符串中的正则表达式的匹配</p>
+  </li>
+  <li>
+    <p>ES2018 引入了<a href="https://github.com/tc39/proposal-regexp-named-groups">具名组匹配</a>（Named Capture Groups），允许为每一个组匹配指定一个名字，既便于阅读代码，又便于引用。相当于对每组匹配添加了id</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>    <span class="kd">const</span> <span class="nx">RE_DATE</span><span class="o">=</span><span class="sr">/</span><span class="se">(?&lt;</span><span class="sr">year&gt;</span><span class="se">\d{4})</span><span class="sr">-</span><span class="se">(?&lt;</span><span class="sr">month&gt;</span><span class="se">\d{2})</span><span class="sr">-</span><span class="se">(?&lt;</span><span class="sr">today&gt;</span><span class="se">\d{2})</span><span class="sr">/</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">objMath</span><span class="o">=</span><span class="nx">RE_DATE</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="dl">'</span><span class="s1">1999-12-32</span><span class="dl">'</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">year</span> <span class="o">=</span><span class="nx">objMath</span><span class="p">.</span><span class="nx">groups</span><span class="p">.</span><span class="nx">year</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">year</span><span class="p">);</span><span class="c1">//1999</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>也可以用解构赋值来替换:</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="p">{</span><span class="na">groups</span><span class="p">:{</span><span class="nx">month</span><span class="p">,</span><span class="nx">today</span><span class="p">}}</span><span class="o">=</span><span class="nx">objMath</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">month</span><span class="p">)</span><span class="c1">//12</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>replace方法匹配</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre>    <span class="kd">let</span> <span class="nx">re</span> <span class="o">=</span> <span class="sr">/</span><span class="se">(?&lt;</span><span class="sr">year&gt;</span><span class="se">\d{4})</span><span class="sr">-</span><span class="se">(?&lt;</span><span class="sr">month&gt;</span><span class="se">\d{2})</span><span class="sr">-</span><span class="se">(?&lt;</span><span class="sr">day&gt;</span><span class="se">\d{2})</span><span class="sr">/</span><span class="p">;</span>
+   <span class="kd">const</span> <span class="nx">rex</span><span class="o">=</span> <span class="dl">'</span><span class="s1">2019-18-22</span><span class="dl">'</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">re</span><span class="p">,(</span>
+        <span class="nx">method</span><span class="p">,</span>
+        <span class="nx">capture1</span><span class="p">,</span>
+        <span class="nx">capture2</span><span class="p">,</span><span class="c1">//第一个组</span>
+        <span class="nx">capture3</span><span class="p">,</span><span class="c1">//第三个组</span>
+        <span class="nx">position</span><span class="p">,</span><span class="c1">//匹配开始的位置</span>
+        <span class="nx">S</span><span class="p">,</span><span class="c1">//原字符串</span>
+        <span class="nx">groups</span>
+    <span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+        <span class="kd">let</span> <span class="p">{</span><span class="nx">year</span><span class="p">,</span><span class="nx">today</span><span class="p">,</span><span class="nx">month</span><span class="p">}</span><span class="o">=</span><span class="nx">groups</span><span class="p">;</span>
+        <span class="k">return</span> <span class="s2">`</span><span class="p">${</span><span class="nx">year</span><span class="p">}</span><span class="s2">`</span>
+    <span class="p">})</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rex</span><span class="o">+</span><span class="dl">"</span><span class="s2"> yes</span><span class="dl">"</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>0b表示十六进制,0o表示八进制，用Number(num)可以将进制数组转换为十进制</p>
+  </li>
+  <li>
+    <p>定义了默认值的参数，应该是函数的尾参数。因为这样比较容易看出来，到底省略了哪些参数。如果非尾部的参数设置默认值，实际上这个参数是没法省略的。</p>
+  </li>
+  <li>
+    <p>```js
+  let x = 1;</p>
+  </li>
+</ul>
+
+<p>function f(y = x) {
+    let x = 2;
+    console.log(y);
+  }</p>
+
+<p>f() // 1
+  ```</p>
+
+<p>上面代码中，函数<code class="highlighter-rouge">f</code>调用时，参数<code class="highlighter-rouge">y = x</code>形成一个单独的作用域。这个作用域里面，变量<code class="highlighter-rouge">x</code>本身没有定义，所以指向外层的全局变量<code class="highlighter-rouge">x</code>。函数调用时，函数体内部的局部变量<code class="highlighter-rouge">x</code>影响不到默认值变量<code class="highlighter-rouge">x</code>。</p>
+
+<ul>
+  <li>
+    <p>es6之后，函数不能在函数体内部声明严格模式，有两种可以选的方法:</p>
+
+    <ol>
+      <li>
+        <p>声明全局严格模式</p>
+      </li>
+      <li>
+        <p>把函数包在一个无参数立即执行函数内部</p>
+
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">doSome</span><span class="o">=</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="dl">'</span><span class="s1">use strict</span><span class="dl">'</span>
+    <span class="k">return</span> <span class="kd">function</span> <span class="nx">thing</span><span class="p">(</span><span class="nx">value</span><span class="p">){</span>
+        	<span class="k">return</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}();</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+:ET

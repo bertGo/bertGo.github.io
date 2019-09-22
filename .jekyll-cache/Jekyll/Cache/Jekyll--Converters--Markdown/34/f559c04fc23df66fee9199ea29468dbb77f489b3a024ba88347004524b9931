@@ -1,0 +1,63 @@
+I"�
+<h3 id="今日分享">今日分享</h3>
+
+<h4 id="水哥">—水哥</h4>
+
+<ul>
+  <li>
+    <p>在html元素中添加 onclick=”debugger” 来停住网页上的js代码，来选择查看其他元素</p>
+  </li>
+  <li>
+    <p>在调试右侧 event listeners 来查看元素自身绑定的事件,点进去链接，然后在新窗口下面有个col，点击将js代码格式化</p>
+  </li>
+  <li>
+    <p>li.c1 选择li标签，同时他要有class是c1</p>
+  </li>
+  <li>
+    <p>字体文件</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>@font -face ：定义
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>为什么要应用字体文件?</p>
+
+    <ol>
+      <li>减少资源占用，相对于传统url，一次下载多次使用</li>
+    </ol>
+  </li>
+  <li>
+    <p>box-sizing:content-box 和border-box的区别</p>
+
+    <ol>
+      <li>content-box设置width =content包含了padding ,会挤里面的内容，不会改变元素的宽，但是有一个峰值，达到峰值后也会改变大小</li>
+      <li>border-box设置width=content+padding+border ;</li>
+    </ol>
+  </li>
+  <li>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre>//箭头函数
+setTimeout(()=&gt;{
+alert(777);
+},1200);
+  
+lisi={
+name:'lisi',
+age;//age:"age"
+function():
+}
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li></li>
+</ul>
+
+:ET

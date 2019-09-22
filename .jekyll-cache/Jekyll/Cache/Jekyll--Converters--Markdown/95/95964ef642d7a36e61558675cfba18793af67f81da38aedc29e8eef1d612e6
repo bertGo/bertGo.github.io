@@ -1,0 +1,90 @@
+I"U<h1 id="825">8/25</h1>
+
+<h3 id="react">–react</h3>
+
+<ul>
+  <li>
+    <p><strong>1.import…from…的from命令后面可以跟很多路径格式，若只给出vue，axios这样的包名，则会自动到node_modules中加载；若给出相对路径及文件前缀，则到指定位置寻找。
+2.可以加载各种各样的文件：.js、.vue、.less等等。
+3.可以省略掉from直接引入。</strong></p>
+  </li>
+  <li>
+    <p>export default和不加 default 的区别： <code class="highlighter-rouge">存疑,不正确</code></p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">cr32</span><span class="p">(){</span> <span class="c1">//输出</span>
+	<span class="c1">// . . . </span>
+<span class="p">}</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">cr32</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">cr32</span><span class="dl">'</span> <span class="c1">//输入</span>
+<span class="o">-------------------------</span>
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">cr32</span><span class="p">(){</span><span class="c1">//输出</span>
+	<span class="c1">//. . . </span>
+<span class="p">}</span>
+<span class="k">import</span> <span class="nx">cr32</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">cr32</span><span class="dl">'</span><span class="c1">//输入</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>想要输入default的输出，需要加上花括号</p>
+  </li>
+  <li>
+    <p>JSX是什么 ？
+JSX是一种javascript 的语法扩展，运用于react架构中，元素是构成React应用的最小单位，JSX就是用来声明React中的的元素，React使用JSX来描述用户界面-</p>
+  </li>
+  <li>
+    <p>react 也支持函数编程，在render()中的括号内，用return( )渲染出来</p>
+
+    <div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>		<span class="k">return</span><span class="p">(</span>
+		<span class="p">&lt;</span><span class="nt">div</span> <span class="na">className=</span><span class="s2">"App"</span><span class="p">&gt;</span>
+			<span class="si">{</span><span class="nx">advanced</span><span class="si">}</span>+<span class="si">{</span><span class="nx">element</span><span class="si">}</span>
+			<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+		<span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>在进行JSX赋值的时候，只能大元素嵌套小元素，比如：</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>		<span class="kd">const</span> <span class="nx">good</span><span class="o">=</span><span class="p">{</span>
+			<span class="na">yes</span><span class="p">:</span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">is</span> <span class="nx">good</span> <span class="o">&lt;</span><span class="nx">hr</span><span class="o">&gt;&lt;</span><span class="sr">/hr&gt;&lt;/</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">,</span><span class="c1">//正确</span>
+			<span class="na">no</span><span class="p">:</span><span class="o">&lt;</span><span class="nx">h2</span><span class="o">&gt;</span><span class="nx">is</span> <span class="nx">not</span> <span class="nx">good</span><span class="o">&lt;</span><span class="sr">/h2&gt; &lt;hr&gt;&lt;/</span><span class="nx">hr</span><span class="o">&gt;</span><span class="c1">//错误</span>
+		<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>return()中同理</p>
+  </li>
+  <li>
+    <p>在属性中嵌入JavaScript表达式时，不要在花括号周围加上引号。您应该使用引号（对于字符串值）或花括号（对于表达式），但不能在同一属性中使用。</p>
+  </li>
+  <li>
+    <p>可以直接在render中使用React.createElement();来创建节点</p>
+
+    <div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">new_element</span><span class="o">=</span><span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span>
+			<span class="dl">'</span><span class="s1">h1</span><span class="dl">'</span><span class="p">,</span>		<span class="c1">//type</span>
+			<span class="p">{</span><span class="na">className</span><span class="p">:</span><span class="dl">'</span><span class="s1">greeting</span><span class="dl">'</span><span class="p">},</span>		<span class="c1">//属性</span>
+			<span class="dl">"</span><span class="s2">亦可暗中发一点光，不待炬火</span><span class="dl">"</span>		<span class="c1">//值</span>
+		<span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+:ET

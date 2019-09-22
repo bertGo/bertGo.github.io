@@ -1,0 +1,36 @@
+I"�<h1 id="820">8/20</h1>
+
+<ul>
+  <li>
+    <p>webkit-box-orient 指定元素水平排列</p>
+
+    <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="o">//</span><span class="err">指定文本在第二行截断以省略号结束的规范代码</span>
+<span class="nt">p</span><span class="p">{</span>
+                     <span class="nl">display</span><span class="p">:</span> <span class="n">-webkit-box</span><span class="p">;</span>
+                    <span class="nl">-webkit-box-orient</span><span class="p">:</span> <span class="n">vertical</span><span class="p">;</span>
+                     <span class="nl">-webkit-line-clamp</span><span class="p">:</span> <span class="m">2</span><span class="p">;</span>           
+                     <span class="nl">text-overflow</span><span class="p">:</span> <span class="n">ellipsis</span><span class="p">;</span>
+                     <span class="nl">overflow</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+                        <span class="err">//</span> <span class="nl">height</span><span class="p">:</span><span class="m">50px</span> <span class="p">;</span>
+                    <span class="err">//</span> <span class="nl">width</span><span class="p">:</span><span class="m">216px</span><span class="p">;</span><span class="err">本例不需要</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>white-space 中有三个方法可以在指定位置换行,输入html换行符</p>
+
+    <p>$#10</p>
+  </li>
+</ul>
+
+:ET

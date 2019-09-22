@@ -1,3 +1,8 @@
+/* eslint-disable padded-blocks */
+/* eslint-disable comma-dangle */
+/* eslint-disable quotes */
+/* eslint-disable indent */
+/* eslint-disable space-before-function-paren */
 module.exports = function(grunt) {
 
     // Project configuration.
@@ -69,5 +74,4 @@ module.exports = function(grunt) {
 
     // Default task(s).
     grunt.registerTask('default', ['uglify', 'less', 'usebanner']);
-
 };

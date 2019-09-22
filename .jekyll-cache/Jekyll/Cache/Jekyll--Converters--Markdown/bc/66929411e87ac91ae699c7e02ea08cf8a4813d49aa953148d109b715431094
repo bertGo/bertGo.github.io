@@ -1,0 +1,84 @@
+I"=<h1 id="91">9/1</h1>
+
+<h3 id="-js技巧">-JS技巧</h3>
+
+<ul>
+  <li>
+    <p>不使用隐式类型转换,将
+<code class="highlighter-rouge">if(object.name)</code></p>
+
+    <p>改变为 : <code class="highlighter-rouge">if(name in object)</code>
+提高了可读性，必要时使用显示类型转换</p>
+  </li>
+  <li></li>
+</ul>
+
+<h3 id="react">–react</h3>
+
+<ul>
+  <li>
+    <p>fetch得到数据:</p>
+
+    <div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span><span class="c1">//需要获取的API</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">something</span><span class="p">)</span> <span class="c1">// 定义响应类型（JSON，Headers 头信息，状态代码）</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="c1">// 显示响应类型 (数据本身)，获取到的数据</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>fetch发送数据:</p>
+
+    <div class="language-react highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="c1">// The actual fetch request</span>
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">some-url</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">post</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="p">},</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="c1">// .then()...</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>promise的then方法可以接受前一个函数的执行结果，还可以保证另一个Promise的顺序执行,允许指定回调函数，在异步执行完毕后调用<code class="highlighter-rouge">保证顺序执行</code></p>
+  </li>
+  <li>
+    <p>用catch方法来处理错误，如果在发起请求时出现错误,这个函数会进入到 catch 中而不是 then 中。</p>
+  </li>
+  <li>
+    <p>assign()用于将源对象的所有可枚举属性复制到目标对象中。第一个对象为目标对象，其后的为源对象，assign为浅拷贝</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="kd">let</span> <span class="nx">target</span><span class="o">=</span><span class="p">{</span><span class="na">a</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+<span class="kd">let</span> <span class="nx">object1</span><span class="o">=</span><span class="p">{</span><span class="na">b</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+<span class="kd">let</span> <span class="nx">object2</span><span class="o">=</span><span class="p">{</span><span class="na">c</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span>
+<span class="nx">assign</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span><span class="nx">object1</span><span class="p">,</span><span class="nx">object2</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span><span class="c1">// {a: 1, b: 2, c: 3</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>为什么input框中一定要设置value?</p>
+  </li>
+</ul>
+
+<h3 id="es6">–ES6</h3>
+
+<ul>
+  <li>扩展操作符它由三个点组成，当使用它时，数组或者对象中的每一个值都会被拷贝到一个新的数组或对象中（扩展运算符是一个浅拷贝）</li>
+</ul>
+:ET

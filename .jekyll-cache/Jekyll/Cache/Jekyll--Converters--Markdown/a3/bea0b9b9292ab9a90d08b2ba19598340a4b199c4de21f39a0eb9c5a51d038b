@@ -1,0 +1,121 @@
+I"�<h1 id="824">8/24</h1>
+
+<ul>
+  <li>
+    <p>回到顶部效果</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">.top</span><span class="dl">"</span><span class="p">).</span><span class="nx">click</span><span class="p">(()</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="c1">//先得到当前坐标</span>
+    <span class="kd">var</span> <span class="nx">top</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">interval</span><span class="o">=</span><span class="nx">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="c1">//设置坐标</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">scrollTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nx">top</span><span class="p">);</span>
+        <span class="nx">top</span><span class="o">=</span><span class="nx">top</span><span class="o">-</span><span class="mi">100</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">top</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+            <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">interval</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">},</span> <span class="mi">10</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>swiper轮播图实现自动轮播效果:在js配置配置代码中，加上<code class="highlighter-rouge">autoplay:true,</code>
+比如：</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">swiper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Swiper</span><span class="p">(</span><span class="dl">'</span><span class="s1">.swiper-container</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">spaceBetween</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="na">effect</span><span class="p">:</span> <span class="dl">'</span><span class="s1">fade</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">autoplay</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+    <span class="na">pagination</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">el</span><span class="p">:</span> <span class="dl">'</span><span class="s1">.swiper-pagination</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">clickable</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">navigation</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">nextEl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">.swiper-button-next</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">prevEl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">.swiper-button-prev</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>修改swiper按钮的背景颜色要用<strong>background-color</strong> ,而不是background;</p>
+  </li>
+  <li>
+    <p>swiper的循环禁用问题解决方案: 将 loop:true写在页面内</p>
+  </li>
+</ul>
+
+<h3 id="react">react</h3>
+
+<ul>
+  <li>
+    <p>npm init -y 创建项目npm项目和packge.json文件。
+-y标记将packge.json内容初始化成默认值</p>
+  </li>
+  <li>
+    <p>npm init 初始化一个项目</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre>随着 npm 的诞生，人们意识到建立一个项目目录不应该这么草率，于是乎规定，
+如果某个文件夹被创建作为一个项目目录，那么它就应该包含一个 package.json 的文件。
+  
+package.json 文件里记录项目的描述信息：项目作者、项目描述、项目依赖哪些包、插件配置信息等等数不清的好处。
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre>命令行里会以交互的形式让你填一些项目的介绍信息，依次介绍如下：（不知道怎么填的直接回车、回车...）
+
+    name 项目名称
+    version 项目的版本号
+    description 项目的描述信息
+    entry point 项目的入口文件
+    test command 项目启动时脚本命令
+    git repository 如果你有 Git 地址，可以将这个项目放到你的 Git 仓库里
+    keywords 关键词
+    author 作者叫啥
+    license 项目要发行的时候需要的证书，平时玩玩忽略它
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<ul>
+  <li>npm install react react-dom 
+安装node包</li>
+</ul>
+:ET

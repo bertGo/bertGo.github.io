@@ -1,0 +1,225 @@
+I"G<h1 id="86">8/6</h1>
+
+<ul>
+  <li>要隐藏一个DOM，我们可以设置CSS的display属性为none，利用css方法就可以实现，不过要再次显示这个DOM就要恢复原有的display</li>
+</ul>
+
+<h3 id="sass">Sass</h3>
+
+<ul>
+  <li>
+    <p><code class="highlighter-rouge">filter()</code>方法可以过滤掉不符合选择器条件的节点：</p>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">langs</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">ul.lang li</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// 拿到ul类名是lang下面所有的li</span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">langs</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="dl">'</span><span class="s1">.dy</span><span class="dl">'</span><span class="p">);</span> <span class="c1">//拿到除了类名为dy的DOM节点</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="nx">number</span><span class="o">=</span><span class="nx">number</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">"</span><span class="s2">S</span><span class="dl">"</span><span class="p">)</span><span class="o">===</span><span class="mi">0</span><span class="p">;</span>
+<span class="p">});</span><span class="c1">//拿到S开头的DOM//搜索S,如果===0就直接返回,达到搜索开头的目的</span>
+<span class="c1">//这里的全等于0是根据indexOf的返回值,搜索到就返回0,搜索不到就返回-1;</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">map()方法</code> 方法把一个jQuery对象包含的若干DOM节点转化为其他对象：</p>
+
+    <ul>
+      <li>
+        <p>不用map方法:innerHTML.get();</p>
+
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre><span class="err">表单</span>
+    <span class="o">&lt;</span><span class="nx">ul</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">lang</span><span class="dl">"</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">li</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">js dy</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">JavaScript</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">li</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">dy</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Python</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">swift</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Swift</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">li</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">dy</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Scheme</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>            <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">haskell</span><span class="dl">"</span><span class="o">&gt;</span><span class="nx">Haskell</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span>    
+<span class="nx">number</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">ul.lang li</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">number</span><span class="o">=</span><span class="nx">numbe</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
+    
+    
+<span class="mi">0</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">li</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">js dy</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="mi">1</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">li</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">dy</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="mi">2</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">swift</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="mi">3</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">li</span> <span class="kd">class</span><span class="o">=</span><span class="dl">"</span><span class="s2">dy</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="mi">4</span><span class="p">:</span> <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">name</span><span class="o">=</span><span class="dl">"</span><span class="s2">haskell</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="nx">length</span><span class="p">:</span> <span class="mi">5</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </li>
+      <li>
+        <p>使用之后</p>
+
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="nx">number</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">ul.lang li</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">number</span><span class="o">=</span><span class="nx">number</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">;</span>
+<span class="p">}).</span><span class="kd">get</span><span class="p">();</span>
+<span class="o">-------------------------------------------</span>
+    
+<span class="mi">0</span><span class="p">:</span> <span class="dl">"</span><span class="s2">JavaScript</span><span class="dl">"</span>
+<span class="mi">1</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Python</span><span class="dl">"</span>
+<span class="mi">2</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Swift</span><span class="dl">"</span>
+<span class="mi">3</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Scheme</span><span class="dl">"</span>
+<span class="mi">4</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Haskell</span><span class="dl">"</span>
+<span class="nx">length</span><span class="p">:</span> <span class="mi">5</span>
+</pre></td></tr></tbody></table></code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>JSON.stringify 将一个javascript对象转换为字符串</p>
+  </li>
+</ul>
+
+<h3 id="选择器">选择器</h3>
+
+<ul>
+  <li>
+    <p>document..querySelectorAll(‘li’);//一次性选择所有li</p>
+  </li>
+  <li>
+    <p>document.querySelector(‘li’)//选择第一个</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">css()</code>方法将作用于DOM节点的<code class="highlighter-rouge">style</code>属性，具有最高优先级</p>
+  </li>
+  <li>
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">first</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="dl">"</span><span class="s2">second</span><span class="dl">"</span><span class="p">));</span><span class="c1">//是否有这个class</span>
+<span class="nx">first</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="dl">"</span><span class="s2">second</span><span class="dl">"</span><span class="p">);</span><span class="c1">//添加class</span>
+<span class="nx">first</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="dl">"</span><span class="s2">second</span><span class="dl">"</span><span class="p">);</span><span class="c1">//删除class</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>.hide()实现者隐藏DOM元素
+.show()实现显示DOM元素</p>
+  </li>
+  <li>
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="sr">//</span> <span class="err">浏览器可视窗口大小</span><span class="p">:</span>
+<span class="err">$</span><span class="p">(</span><span class="n">window</span><span class="p">).</span><span class="nf">width</span><span class="p">();</span> <span class="sr">//</span> <span class="mi">800</span>
+<span class="err">$</span><span class="p">(</span><span class="n">window</span><span class="p">).</span><span class="nf">height</span><span class="p">();</span> <span class="sr">//</span> <span class="mi">600</span>
+  
+<span class="sr">//</span> <span class="no">HTML</span><span class="err">文档大小</span><span class="p">:</span>
+<span class="err">$</span><span class="p">(</span><span class="n">document</span><span class="p">).</span><span class="nf">width</span><span class="p">();</span> <span class="sr">//</span> <span class="mi">800</span>
+<span class="err">$</span><span class="p">(</span><span class="n">document</span><span class="p">).</span><span class="nf">height</span><span class="p">();</span> <span class="sr">//</span> <span class="mi">3500</span>
+  
+<span class="sr">//</span> <span class="err">某个</span><span class="n">div</span><span class="err">的大小</span><span class="p">:</span>
+<span class="n">var</span> <span class="n">div</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="s1">'#test-div'</span><span class="p">);</span>
+<span class="n">div</span><span class="p">.</span><span class="nf">width</span><span class="p">();</span> <span class="sr">//</span> <span class="mi">600</span>
+<span class="n">div</span><span class="p">.</span><span class="nf">height</span><span class="p">();</span> <span class="sr">//</span> <span class="mi">300</span>
+<span class="n">div</span><span class="p">.</span><span class="nf">width</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span> <span class="sr">//</span> <span class="err">设置</span><span class="no">CSS</span><span class="err">属性</span> <span class="ss">width: </span><span class="mi">400</span><span class="n">px</span><span class="err">，是否生效要看</span><span class="no">CSS</span><span class="err">是否有效</span>
+<span class="n">div</span><span class="p">.</span><span class="nf">height</span><span class="p">(</span><span class="s1">'200px'</span><span class="p">);</span> <span class="sr">//</span> <span class="err">设置</span><span class="no">CSS</span><span class="err">属性</span> <span class="ss">height: </span><span class="mi">200</span><span class="n">px</span><span class="err">，是否生效要看</span><span class="no">CSS</span><span class="err">是否有效</span>
+  
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">text.is("value")</code> is判断是否为真</p>
+  </li>
+  <li>
+    <p>对于表单元素，jQuery对象统一提供<code class="highlighter-rouge">val()</code>方法获取和设置对应的<code class="highlighter-rouge">value</code>属性：</p>
+  </li>
+  <li>
+    <p>jQuery对象的<code class="highlighter-rouge">text()</code>和<code class="highlighter-rouge">html()</code>方法分别获取节点的文本和原始HTML文本;</p>
+  </li>
+  <li>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">var</span> <span class="n">ul</span> <span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="s">'#test-div&gt;ul'</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>用append添加新的代码片段</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nx">ul</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;li&gt;&lt;span&gt;Haskell&lt;/span&gt;&lt;/li&gt;</span><span class="dl">'</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>innerHTML是获取对象属性的值，他本身是一个DOM属性，对jq对象调用会报错</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="nx">ps</span><span class="p">.</span><span class="nx">innerHTML</span><span class="o">=</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;h2&gt;我是append镶嵌的h2值&lt;/h2&gt;</span><span class="dl">"</span><span class="p">);</span>
+  
+  
+<span class="nx">ps</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">ps</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">);</span> <span class="o">==</span><span class="nx">ps</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="dl">"</span><span class="s2">&lt;h2&gt;我是append镶嵌的h2值&lt;/h2&gt;</span><span class="dl">"</span><span class="p">);</span>
+  
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">append()</code>把DOM添加到最后，<code class="highlighter-rouge">prepend()</code>则把DOM添加到最前。</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nx">ul</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">"</span><span class="s2">#scheme</span><span class="dl">"</span><span class="p">));</span><span class="c1">//是将id为sheme的节点添加到ul节点最后面，如果没有就什么都不发生</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>另外注意，如果要添加的DOM节点已经存在于HTML文档中，它会首先从文档移除，然后再添加，也就是说，用<code class="highlighter-rouge">append()</code>，你可以移动一个DOM节点。</p>
+  </li>
+  <li>
+    <p>after()和before()</p>
+
+    <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="kd">var</span> <span class="nx">js</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#test-div&gt;ul&gt;li:first-child</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">js</span><span class="p">.</span><span class="nx">after</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;li&gt;&lt;span&gt;Lua&lt;/span&gt;&lt;/li&gt;</span><span class="dl">'</span><span class="p">);</span><span class="c1">//添加在第一个节点之后</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>remove()删除节点</li>
+</ul>
+:ET

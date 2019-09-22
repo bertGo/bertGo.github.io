@@ -1,0 +1,103 @@
+I"<h2 id="day-3-717">DAY 3 （7/17）</h2>
+
+<h5 id="git-命令的学习">GIT 命令的学习：</h5>
+
+<p><code class="highlighter-rouge">git branch --set-upstream-to=origin/&lt;远程分支&gt; &lt;本地分支&gt;</code>  设置本地分支和远程分支的跟踪</p>
+
+<p><code class="highlighter-rouge">git push --set-upstream origin &lt;远程分支&gt;</code> 推送当前的分支到指定远程分支下</p>
+
+<p><code class="highlighter-rouge">git push origin &lt;远程分支名&gt;</code> 将分支推送到线上</p>
+
+<p><code class="highlighter-rouge">git checkout -b branch-name origin/branch-name </code>  在本地创建和远程分支对应的分支，本地分支名和远程分支名最好一样</p>
+
+<p><code class="highlighter-rouge">git checkout --file</code> 是将文件在工作区的修改全部撤销 如果提交了(commit)，就返回到暂存区的状态(add),如果没有提交，就返回到和版本库一样的状态</p>
+
+<p><code class="highlighter-rouge">ssh-keygen -t rsa  -C "自己的邮箱"</code>  用来创建SSH Key</p>
+
+<p><code class="highlighter-rouge">git tag</code>  打一个轻量标签</p>
+
+<p><code class="highlighter-rouge">git tag -a &lt;version number&gt;  </code>  打一个附注标签</p>
+
+<p><code class="highlighter-rouge">git push origin &lt;version number&gt; </code> 将本地的指定标签推送到远程仓库</p>
+
+<p><code class="highlighter-rouge">git push origin --tags</code> 把所有不在远程仓库服务器上的标签全部传送到那里</p>
+
+<h5 id="git概念的学习">GIT概念的学习</h5>
+
+<ol>
+  <li>
+    <p>git跟踪的是修改，而不是提交</p>
+  </li>
+  <li>
+    <p>Unix/Linux 命令中，<code class="highlighter-rouge">-</code> 后一般跟短命令选项（通常是单字母，也有一些命令是例外的），<code class="highlighter-rouge">--</code> 后一般跟长命令选项。如果只有一个单独的<code class="highlighter-rouge">--</code>，后面不紧跟任何选项，则表示命令选项结束，后续的都作为命令的参数而不是选项。例如：<code class="highlighter-rouge">git checkout -- filename</code> <code class="highlighter-rouge">filename</code>作为<code class="highlighter-rouge">git checkout</code> 的参数，而不是选项。</p>
+  </li>
+  <li>
+    <p>git  checkout 其实是用版本库里的版本切换工作区的版本</p>
+  </li>
+  <li>
+    <p>创建好ssh key 后，可以用cd ~/.ssh直接搜索后缀为.ssh的文件，随后在github上添加自己的公钥（id_rsa.pub)内的内容</p>
+  </li>
+  <li>
+    <p>如果<code class="highlighter-rouge">git pull</code>提示<code class="highlighter-rouge">no tracking information</code>，则说明本地分支和远程分支的链接关系没有创建，用命令<code class="highlighter-rouge">git branch --set-upstream-to &lt;branch-name&gt; origin/&lt;branch-name&gt;</code>。</p>
+  </li>
+  <li>
+    <p><strong><em>一个轻量标签很像一个不会改变的分支 - 它只是一个特定提交的引用。</em></strong></p>
+  </li>
+  <li>
+    <p>然而，附注标签是存储在 Git 数据库中的一个完整对象。 它们是可以被校验的；其中包含打标签者的名字、电子邮件地址、日期时间；还有一个标签信息；并且可以使用 GNU Privacy Guard （GPG）签名与验证。 通常建议创建附注标签，这样你可以拥有以上所有信息；但是如果你只是想用一个临时的标签，或者因为某些原因不想要保存那些信息，轻量标签也是可用的。</p>
+  </li>
+  <li>
+    <h4 id="tag标签可以根据commit号来打标签--git-tag-version-number-commit-number-">tag标签可以根据commit号来打标签  <code class="highlighter-rouge">git tag &lt;version number&gt; &lt;commit number&gt; </code></h4>
+  </li>
+  <li></li>
+</ol>
+
+<p>#### Linux 命令的学习</p>
+
+<ol>
+  <li>
+    <p><code class="highlighter-rouge">chomd</code> 权限设定</p>
+
+    <ul>
+      <li>u 表示该文件的拥有者，g 表示与该文件的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。</li>
+      <li>+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。</li>
+      <li>r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该文件是个子目录或者该文件已经被设定过为可执行。</li>
+    </ul>
+
+    <p>其他参数说明：</p>
+
+    <ul>
+      <li>-c : 若该文件权限确实已经更改，才显示其更改动作</li>
+      <li>-f : 若该文件权限无法被更改也不要显示错误讯息</li>
+      <li>-v : 显示权限变更的详细资料</li>
+      <li>-R : 对目前目录下的所有文件与子目录进行相同的权限变更(即以递回的方式逐个变更)</li>
+      <li>–help : 显示辅助说明</li>
+      <li>
+        <p>–version : 显示版本</p>
+      </li>
+      <li>
+        <p>chmod abc file</p>
+
+        <p>其中a,b,c各为一个数字，分别表示User、Group、及Other的权限。</p>
+
+        <h4 id="r4w2x1">r=4，w=2，x=1</h4>
+
+        <ul>
+          <li>
+            <p>若要rwx属性则4+2+1=7；</p>
+          </li>
+          <li>
+            <p>若要rw-属性则4+2=6；</p>
+          </li>
+          <li>
+            <p>若要r-x属性则4+1=5。</p>
+
+            <h1 id="end">END.</h1>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+:ET
