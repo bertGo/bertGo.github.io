@@ -83,5 +83,5 @@ tags :
 
 
 <!-- ![图片]{img/nginx.png} -->
-![图片](img/nginx.png)
+![图片](/img/nginx.png)
 
