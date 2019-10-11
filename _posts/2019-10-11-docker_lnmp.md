@@ -80,5 +80,5 @@ tags :
 
 - 输出结果为：
 
-  ![结果]{img/nginx.png}
+![结果]{img/nginx.png}
 
