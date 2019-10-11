@@ -82,7 +82,5 @@ tags :
 
 
 
-![结果]{img/nginx.png}
-
-![十六-10]{img/16-10.png}
+![图片]{img/nginx.png}
 
