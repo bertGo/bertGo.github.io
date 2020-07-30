@@ -1,8 +1,8 @@
 # Site settings
-title: 兄弟会-Bert
+title: Bert
 SEOTitle: Bert的博客 | Bert Blog
 header-img: img/home-bg.jpg
-email: huxpro@gmail.com
+email: hibert@protonmail.com
 description: "这里是@Bert的个人博客，与你一起发现更大的世界"
 keyword: " 正在前进"
 url: "https://huangxuan.me"              # your host, for absolute URL##博客url
@@ -13,7 +13,7 @@ future: true
 
 # SNS settings
 RSS: false
-weibo_username:     huxpro
+weibo_username:
 zhihu_username:     
 github_username:    bertGo
 twitter_username:   
@@ -61,7 +61,7 @@ kramdown:
 
 
 # Disqus settings
-disqus_username: hux
+disqus_username: Bert
 
 # Netease settings
 netease_comment: false
