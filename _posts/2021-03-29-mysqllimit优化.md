@@ -32,11 +32,11 @@ tags :
 
 - 偏移量5000
 
-![mysql]{/img/code-img/mysql-limit.png}
+![mysql]{https://bertgo.github.io/img/code-img/mysql-limit.png}
 
 - 偏移量100
 
-![mysql]{/img/code-img/mysql-limit-small.png}
+![mysql]{https://bertgo.github.io/img/code-img/mysql-limit-small.png}
 
 #### 结论
 
