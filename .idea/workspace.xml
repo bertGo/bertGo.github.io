@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e4839cf-c7cb-4726-8e31-38feec4e9745" name="Default Changelist" comment="" />
+    <list default="true" id="5e4839cf-c7cb-4726-8e31-38feec4e9745" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/liuhui.jpg" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +27,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -37,16 +42,11 @@
       <updated>1596086460463</updated>
       <workItem from="1596086462198" duration="3171000" />
       <workItem from="1616574230574" duration="3153000" />
+      <workItem from="1640187857183" duration="15000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="657" y="213" width="598" height="594" key="find.popup" timestamp="1596086632424">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="657" y="213" width="598" height="594" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596086632424" />
+    <option name="version" value="3" />
   </component>
 </project>
