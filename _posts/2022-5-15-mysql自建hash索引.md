@@ -47,5 +47,3 @@ tags :
 - 首先创建如下表:
 
   ![image-20220515173602464](https://bertgo.github.io/img/code-img/image-20220515173602464.png)
-
-  
