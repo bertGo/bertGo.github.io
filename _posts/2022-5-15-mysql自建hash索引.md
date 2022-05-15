@@ -4,9 +4,9 @@ title : 自建伪hash索引
 #二级标题
 subtitle : B-Tree
 author : Bert
-header-img: img/post-sample-image.jpg
+header-img: img/post-bg-brett.jpg
 catalog : true
-date : 2021-12-22 20:23
+date : 2022-5-15 19:01
 tags :
 - Innodb
 - 自建hash索引
@@ -47,3 +47,48 @@ tags :
 - 首先创建如下表:
 
   ![image-20220515173602464](https://bertgo.github.io/img/code-img/image-20220515173602464.png)
+
+- 创建触发器:
+
+  ```mysql
+  CREATE TRIGGER pseudohash_crc_ins BEFORE INSERT ON pseudohash FOR EACH ROW BEGIN
+  SET NEW.url_crc = crc32(NEW.url);
+  END;
+  
+  CREATE TRIGGER pseudohash_crc_upd BEFORE UPDATE ON pseudohash FOR EACH ROW BEGIN
+  SET NEW.url_crc = crc32(NEW.url);
+  END;
+  ```
+
+- 验证触发器如何维护hash索引:
+
+  ![image-20220515184528851](https://bertgo.github.io/img/code-img/image-20220515184528851.png)
+
+  ![image-20220515184704083](https://bertgo.github.io/img/code-img/image-20220515184704083.png)
+
+- 如果使用这种方式,不要使用SHA1()和md5作为哈希函数,因为这两个函数计算出来的hash值是非常长的字符串,会浪费大量空间,寻找比较时也会更慢,它们是强加密函数,设计目标是最大限度消除冲突,但这里 并不需要,简单hash函数的冲突在一个可以接受的范围内,同时又能提供更好的性能.
+
+#### 处理hash冲突
+
+- 当使用hash索引进行查询时 ,需要在where子句中包含常量值:
+
+  ```mysql
+  mysql>SELECT id FROM url WHERE url_crc = CRC32('http://zhihu.com') 
+  	->AND url = 'http://zhihu.com';
+  ```
+
+- 一旦出现冲突,另一个哈希值也刚好是 1089504675 ,则下面的查询是无法正确工作的;
+
+  ```mysql
+  mysql> SELECT id FROM url WHERE url_crc = CRC32('http://zhihu.com') 
+  ```
+
+- 因为所谓的 "生日悖论", 出现冲突的概率比想象中要快得多,当索引有93000条记录时,出现冲突的概率是1%
+
+- 要避免冲突问题,必须在where条件中带入hash值和对应的列值,如果只想统计记录数,则可以 不带入列值
+
+  
+
+  
+
+  
