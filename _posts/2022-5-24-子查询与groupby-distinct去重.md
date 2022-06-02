@@ -3,7 +3,7 @@ layout: page
 title : mysql自定义变量的妙用
 subtitle : MYSQL优化
 author : Bert
-header-img: pexels-photo-6125723.jpeg
+header-img: img/code-img/pexels-photo-6125723.jpeg
 catalog : true
 date : 2022-05-26 21:50
 tags :
