@@ -9,8 +9,7 @@ catalog : true
 date : 2022-5-15 19:01
 tags :
 - Innodb
-- 自建hash索引
-- Mysql触发器
+- MYSQL
 ---
 
 ### 为什么需要自建hash索引
